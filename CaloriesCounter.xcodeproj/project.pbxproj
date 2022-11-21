@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00C79577292BFA550097D255 /* footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C79575292BFA550097D255 /* footer.swift */; };
+		00C79578292BFA550097D255 /* header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C79576292BFA550097D255 /* header.swift */; };
 		0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */; };
 		0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FE292BD10C00355CFF /* ContentView.swift */; };
 		0AE4D501292BD10E00355CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AE4D500292BD10E00355CFF /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00C79575292BFA550097D255 /* footer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = footer.swift; path = ../../../Kalorienzaehler_Abschluss/Kalorienzaehler_Abschluss/Package/footer.swift; sourceTree = "<group>"; };
+		00C79576292BFA550097D255 /* header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = header.swift; path = ../../../Kalorienzaehler_Abschluss/Kalorienzaehler_Abschluss/Package/header.swift; sourceTree = "<group>"; };
 		0AE4D4F9292BD10C00355CFF /* CaloriesCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCounterApp.swift; sourceTree = "<group>"; };
 		0AE4D4FE292BD10C00355CFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +40,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00C79574292BFA070097D255 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				00C79575292BFA550097D255 /* footer.swift */,
+				00C79576292BFA550097D255 /* header.swift */,
+			);
+			path = Package;
+			sourceTree = "<group>";
+		};
 		0AE4D4F0292BD10C00355CFF = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +68,7 @@
 		0AE4D4FB292BD10C00355CFF /* CaloriesCounter */ = {
 			isa = PBXGroup;
 			children = (
+				00C79574292BFA070097D255 /* Package */,
 				0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */,
 				0AE4D4FE292BD10C00355CFF /* ContentView.swift */,
 				0AE4D500292BD10E00355CFF /* Assets.xcassets */,
@@ -148,7 +162,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C79578292BFA550097D255 /* header.swift in Sources */,
 				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
+				00C79577292BFA550097D255 /* footer.swift in Sources */,
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
