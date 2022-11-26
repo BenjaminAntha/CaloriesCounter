@@ -11,36 +11,39 @@ import SwiftUI
 //testölajfhöalfnaöslnadfas
 
 struct FooterView: View {
-    var body: some View {
-        TabView {
-            ContentView()
-                .tabItem {
-                    Label("Kalender", systemImage: "calendar")
-                }
-            StartMenuView()
-                .tabItem {
-                    
-                    Label("Statistik", systemImage: "chart.bar.xaxis")
-                }
-            Text("View3")
-                .tabItem {
-                    Label("Add", systemImage: "plus")
-                }
-            Text("View4")
-                .tabItem {
-                    Label("Essen", systemImage: "fork.knife")
-                }
-            Text("View5")
-                .tabItem {
-                    Label("Profil", systemImage: "person")
-                }
+        var body: some View {
+            TabView {
+                StartMenuView()
+                    .tabItem {
+                        Label("Kalender", systemImage: "calendar")
+                    }
+                StatsView()
+                    .tabItem {
+                        
+                        Label("Statistik", systemImage: "chart.bar.xaxis")
+                    }
+                addFoodView()
+                    .tabItem {
+                        Label("Add", systemImage: "plus")
+                    }
+                FoodLogView()
+                    .tabItem {
+                        Label("Essen", systemImage: "fork.knife")
+                    }
+                ProfilView()
+                    .tabItem {
+                        Label("Profil", systemImage: "person")
+                    }
+            }
+            
+            .padding()
+            
         }
-        
-    }
     }
 
 struct FooterView_Previews: PreviewProvider {
     static var previews: some View {
         FooterView()
+            .previewLayout(.fixed(width: 375, height: 80))
     }
 }

@@ -11,9 +11,7 @@ import SwiftUI
 struct CaloriesCounterApp: App {
     var body: some Scene {
         WindowGroup {
-            
             ContentView()
-            FooterView()
         }
     }
 }

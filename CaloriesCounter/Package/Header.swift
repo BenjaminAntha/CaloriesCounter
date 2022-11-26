@@ -11,26 +11,31 @@ import SwiftUI
 struct HeaderView: View {
     var body: some View {
         Form{
-            
             VStack {
                 HStack {
                     Text("Kalorienzähler").multilineTextAlignment(.center)
                         .padding()
-                        .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(maxWidth: 200, maxHeight: 35, alignment: .center)
                 }
                 
                 HStack{
                     Label("", systemImage: "arrow.left")
                     Text(Date.now, format: .dateTime.day().month().year())
                         .padding()
-                        .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
                     Label("", systemImage: "arrow.right")
                 }
             }
+            
         }
+        .frame(minWidth: 300, maxWidth: 5000, minHeight: 100, maxHeight: 150)
+       
+        
+        
         
         
     }
+        
 }
 
 struct HeaderView_Previews: PreviewProvider {

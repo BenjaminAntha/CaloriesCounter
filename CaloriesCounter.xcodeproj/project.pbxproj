@@ -10,8 +10,10 @@
 		003CBBEC29309A590037C716 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBEB29309A590037C716 /* StartMenu.swift */; };
 		003CBBEE2930A39B0037C716 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBED2930A39B0037C716 /* Stats.swift */; };
 		003CBBF02930A3B50037C716 /* addFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBEF2930A3B50037C716 /* addFood.swift */; };
-		003CBBF22930A3FD0037C716 /* GesFoods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF12930A3FD0037C716 /* GesFoods.swift */; };
+		003CBBF22930A3FD0037C716 /* FoodLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF12930A3FD0037C716 /* FoodLog.swift */; };
 		003CBBF42930A40B0037C716 /* Profil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF32930A40B0037C716 /* Profil.swift */; };
+		003CBBF62930BBBF0037C716 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF52930BBBF0037C716 /* ProgressCircle.swift */; };
+		003CBBF829310E400037C716 /* FoodSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF729310E400037C716 /* FoodSample.swift */; };
 		0A992325292C03A900F68E16 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992323292C03A800F68E16 /* Header.swift */; };
 		0A992326292C03A900F68E16 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992324292C03A900F68E16 /* Footer.swift */; };
 		0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */; };
@@ -26,8 +28,10 @@
 		003CBBEB29309A590037C716 /* StartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		003CBBED2930A39B0037C716 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		003CBBEF2930A3B50037C716 /* addFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFood.swift; sourceTree = "<group>"; };
-		003CBBF12930A3FD0037C716 /* GesFoods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesFoods.swift; sourceTree = "<group>"; };
+		003CBBF12930A3FD0037C716 /* FoodLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLog.swift; sourceTree = "<group>"; };
 		003CBBF32930A40B0037C716 /* Profil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profil.swift; sourceTree = "<group>"; };
+		003CBBF52930BBBF0037C716 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
+		003CBBF729310E400037C716 /* FoodSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSample.swift; sourceTree = "<group>"; };
 		0A992323292C03A800F68E16 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0A992324292C03A900F68E16 /* Footer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
 		0AE4D4F9292BD10C00355CFF /* CaloriesCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +59,8 @@
 			children = (
 				0A992324292C03A900F68E16 /* Footer.swift */,
 				0A992323292C03A800F68E16 /* Header.swift */,
+				003CBBF52930BBBF0037C716 /* ProgressCircle.swift */,
+				003CBBF729310E400037C716 /* FoodSample.swift */,
 			);
 			path = Package;
 			sourceTree = "<group>";
@@ -86,7 +92,7 @@
 				003CBBEB29309A590037C716 /* StartMenu.swift */,
 				003CBBED2930A39B0037C716 /* Stats.swift */,
 				003CBBEF2930A3B50037C716 /* addFood.swift */,
-				003CBBF12930A3FD0037C716 /* GesFoods.swift */,
+				003CBBF12930A3FD0037C716 /* FoodLog.swift */,
 				003CBBF32930A40B0037C716 /* Profil.swift */,
 			);
 			path = CaloriesCounter;
@@ -181,11 +187,13 @@
 				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
 				003CBBEC29309A590037C716 /* StartMenu.swift in Sources */,
+				003CBBF62930BBBF0037C716 /* ProgressCircle.swift in Sources */,
+				003CBBF829310E400037C716 /* FoodSample.swift in Sources */,
 				003CBBEE2930A39B0037C716 /* Stats.swift in Sources */,
 				0A992326292C03A900F68E16 /* Footer.swift in Sources */,
 				0A992325292C03A900F68E16 /* Header.swift in Sources */,
 				003CBBF02930A3B50037C716 /* addFood.swift in Sources */,
-				003CBBF22930A3FD0037C716 /* GesFoods.swift in Sources */,
+				003CBBF22930A3FD0037C716 /* FoodLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
