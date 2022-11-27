@@ -11,8 +11,7 @@ import SwiftUI
 
 struct StatsView: View {
     var body: some View {
-        let today: Date = Date.now
-        let yesterday: Date = today-1;
+       
         
         //let data: [ToyShape] = [
        //     .init(day: today , calories: 300),

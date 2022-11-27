@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 
 struct ProgressCircleView: View {
+   
     
     let progress: Double
     var body: some View {
@@ -30,6 +31,7 @@ struct ProgressCircleView: View {
                         .rotationEffect(.degrees(-90))
                         // 1
                         .animation(.easeOut, value: progress)
+        
     }
 }
 

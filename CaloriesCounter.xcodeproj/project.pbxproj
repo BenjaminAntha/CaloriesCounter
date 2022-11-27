@@ -14,6 +14,10 @@
 		003CBBF42930A40B0037C716 /* Profil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF32930A40B0037C716 /* Profil.swift */; };
 		003CBBF62930BBBF0037C716 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF52930BBBF0037C716 /* ProgressCircle.swift */; };
 		003CBBF829310E400037C716 /* FoodSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF729310E400037C716 /* FoodSample.swift */; };
+		003CBBFA293219340037C716 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF9293219340037C716 /* Food.swift */; };
+		003CBBFC29321A3F0037C716 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBFB29321A3F0037C716 /* Person.swift */; };
+		003CBBFE293391B60037C716 /* PersonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBFD293391B60037C716 /* PersonData.swift */; };
+		003CBC022933AB3E0037C716 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBC012933AB3E0037C716 /* Datum.swift */; };
 		0A992325292C03A900F68E16 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992323292C03A800F68E16 /* Header.swift */; };
 		0A992326292C03A900F68E16 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992324292C03A900F68E16 /* Footer.swift */; };
 		0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */; };
@@ -32,6 +36,10 @@
 		003CBBF32930A40B0037C716 /* Profil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profil.swift; sourceTree = "<group>"; };
 		003CBBF52930BBBF0037C716 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		003CBBF729310E400037C716 /* FoodSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSample.swift; sourceTree = "<group>"; };
+		003CBBF9293219340037C716 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		003CBBFB29321A3F0037C716 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		003CBBFD293391B60037C716 /* PersonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonData.swift; sourceTree = "<group>"; };
+		003CBC012933AB3E0037C716 /* Datum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
 		0A992323292C03A800F68E16 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0A992324292C03A900F68E16 /* Footer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
 		0AE4D4F9292BD10C00355CFF /* CaloriesCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +69,10 @@
 				0A992323292C03A800F68E16 /* Header.swift */,
 				003CBBF52930BBBF0037C716 /* ProgressCircle.swift */,
 				003CBBF729310E400037C716 /* FoodSample.swift */,
+				003CBBF9293219340037C716 /* Food.swift */,
+				003CBBFB29321A3F0037C716 /* Person.swift */,
+				003CBBFD293391B60037C716 /* PersonData.swift */,
+				003CBC012933AB3E0037C716 /* Datum.swift */,
 			);
 			path = Package;
 			sourceTree = "<group>";
@@ -183,17 +195,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				003CBBFE293391B60037C716 /* PersonData.swift in Sources */,
 				003CBBF42930A40B0037C716 /* Profil.swift in Sources */,
 				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
 				003CBBEC29309A590037C716 /* StartMenu.swift in Sources */,
 				003CBBF62930BBBF0037C716 /* ProgressCircle.swift in Sources */,
+				003CBBFA293219340037C716 /* Food.swift in Sources */,
 				003CBBF829310E400037C716 /* FoodSample.swift in Sources */,
 				003CBBEE2930A39B0037C716 /* Stats.swift in Sources */,
 				0A992326292C03A900F68E16 /* Footer.swift in Sources */,
 				0A992325292C03A900F68E16 /* Header.swift in Sources */,
+				003CBBFC29321A3F0037C716 /* Person.swift in Sources */,
 				003CBBF02930A3B50037C716 /* addFood.swift in Sources */,
 				003CBBF22930A3FD0037C716 /* FoodLog.swift in Sources */,
+				003CBC022933AB3E0037C716 /* Datum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

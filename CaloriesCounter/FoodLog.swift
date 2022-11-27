@@ -45,6 +45,7 @@ struct FoodLogView: View {
                 
             }
         }
+        .padding()
         
         
        
