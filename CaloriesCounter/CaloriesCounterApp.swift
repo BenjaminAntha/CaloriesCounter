@@ -19,7 +19,7 @@ struct CaloriesCounterApp: App {
 
             VStack {
                 if let configuration = realmManager.configuration, let realm = realmManager.realm {
-                    ContentView()
+                    HeaderView()
                         .environment(\.realmConfiguration, configuration)
                         .environment(\.realm, realm) // Access for the project
                     FooterView()
