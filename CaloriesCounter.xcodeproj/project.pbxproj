@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A99231A292BFCD500F68E16 /* sdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992319292BFCD500F68E16 /* sdf.swift */; };
+		0A12C4BD292ECB6800F5C425 /* FoodProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12C4BC292ECB6800F5C425 /* FoodProduct.swift */; };
+		0A362CCE2932212C00166289 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CCD2932212C00166289 /* RealmManager.swift */; };
+		0A362CD02933A53100166289 /* ListFoodProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CCF2933A53100166289 /* ListFoodProductsView.swift */; };
+		0A362CD22933A87D00166289 /* UserAcc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD12933A87D00166289 /* UserAcc.swift */; };
+		0A362CD42934089200166289 /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD32934089200166289 /* Daily.swift */; };
+		0A362CD62934096600166289 /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD52934096600166289 /* Nutrition.swift */; };
 		0A992325292C03A900F68E16 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992323292C03A800F68E16 /* Header.swift */; };
 		0A992326292C03A900F68E16 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992324292C03A900F68E16 /* Footer.swift */; };
-		0A992328292C03D100F68E16 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992327292C03D100F68E16 /* test.swift */; };
 		0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */; };
 		0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FE292BD10C00355CFF /* ContentView.swift */; };
 		0AE4D501292BD10E00355CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AE4D500292BD10E00355CFF /* Assets.xcassets */; };
@@ -20,10 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A992319292BFCD500F68E16 /* sdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sdf.swift; sourceTree = "<group>"; };
+		0A12C4BC292ECB6800F5C425 /* FoodProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProduct.swift; sourceTree = "<group>"; };
+		0A362CCD2932212C00166289 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		0A362CCF2933A53100166289 /* ListFoodProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFoodProductsView.swift; sourceTree = "<group>"; };
+		0A362CD12933A87D00166289 /* UserAcc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAcc.swift; sourceTree = "<group>"; };
+		0A362CD32934089200166289 /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
+		0A362CD52934096600166289 /* Nutrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition.swift; sourceTree = "<group>"; };
 		0A992323292C03A800F68E16 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0A992324292C03A900F68E16 /* Footer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
-		0A992327292C03D100F68E16 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		0AE4D4F9292BD10C00355CFF /* CaloriesCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCounterApp.swift; sourceTree = "<group>"; };
 		0AE4D4FE292BD10C00355CFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,9 +57,36 @@
 			children = (
 				0A992324292C03A900F68E16 /* Footer.swift */,
 				0A992323292C03A800F68E16 /* Header.swift */,
-				0A992327292C03D100F68E16 /* test.swift */,
 			);
 			path = Package;
+			sourceTree = "<group>";
+		};
+		0A12C4BB292ECB3100F5C425 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A12C4BC292ECB6800F5C425 /* FoodProduct.swift */,
+				0A362CD12933A87D00166289 /* UserAcc.swift */,
+				0A362CD32934089200166289 /* Daily.swift */,
+				0A362CD52934096600166289 /* Nutrition.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0A12C4BE29301BEE00F5C425 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				0AE4D4FE292BD10C00355CFF /* ContentView.swift */,
+				0A362CCF2933A53100166289 /* ListFoodProductsView.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		0A362CCC293220F700166289 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0A362CCD2932212C00166289 /* RealmManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		0AE4D4F0292BD10C00355CFF = {
@@ -73,12 +108,13 @@
 		0AE4D4FB292BD10C00355CFF /* CaloriesCounter */ = {
 			isa = PBXGroup;
 			children = (
+				0A362CCC293220F700166289 /* Managers */,
+				0A12C4BB292ECB3100F5C425 /* Models */,
 				00C79574292BFA070097D255 /* Package */,
+				0A12C4BE29301BEE00F5C425 /* Group */,
 				0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */,
-				0AE4D4FE292BD10C00355CFF /* ContentView.swift */,
 				0AE4D500292BD10E00355CFF /* Assets.xcassets */,
 				0AE4D502292BD10E00355CFF /* Preview Content */,
-				0A992319292BFCD500F68E16 /* sdf.swift */,
 			);
 			path = CaloriesCounter;
 			sourceTree = "<group>";
@@ -168,12 +204,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A362CCE2932212C00166289 /* RealmManager.swift in Sources */,
+				0A362CD02933A53100166289 /* ListFoodProductsView.swift in Sources */,
+				0A362CD62934096600166289 /* Nutrition.swift in Sources */,
 				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
-				0A992328292C03D100F68E16 /* test.swift in Sources */,
-				0A99231A292BFCD500F68E16 /* sdf.swift in Sources */,
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
+				0A362CD22933A87D00166289 /* UserAcc.swift in Sources */,
 				0A992326292C03A900F68E16 /* Footer.swift in Sources */,
+				0A12C4BD292ECB6800F5C425 /* FoodProduct.swift in Sources */,
 				0A992325292C03A900F68E16 /* Header.swift in Sources */,
+				0A362CD42934089200166289 /* Daily.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

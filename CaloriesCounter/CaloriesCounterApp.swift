@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct CaloriesCounterApp: App {
+    
+    @StateObject private var realmManager = RealmManager.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VStack {
+                if let configuration = realmManager.configuration, let realm = realmManager.realm {
+                    ContentView()
+                        .environment(\.realmConfiguration, configuration)
+                        .environment(\.realm, realm) // Access for the project
+                }
+            }.task {
+                try? await realmManager.initialize() // ladet die published variablen und erst dann wir der Vstack geladen
+            }
         }
     }
 }
