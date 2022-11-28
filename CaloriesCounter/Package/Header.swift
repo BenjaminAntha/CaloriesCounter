@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct headerView: View {
+struct HeaderView: View {
     var body: some View {
         Form{
             
@@ -33,8 +33,8 @@ struct headerView: View {
     }
 }
 
-struct headerView_Previews: PreviewProvider {
+struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        headerView()
+        HeaderView()
     }
 }

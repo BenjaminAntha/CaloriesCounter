@@ -13,12 +13,13 @@ import SwiftUI
 struct FooterView: View {
     var body: some View {
         TabView {
-            Text("View1")
+            ContentView()
                 .tabItem {
                     Label("Kalender", systemImage: "calendar")
                 }
-            Text("View2")
+            StartMenuView()
                 .tabItem {
+                    
                     Label("Statistik", systemImage: "chart.bar.xaxis")
                 }
             Text("View3")

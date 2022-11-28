@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		0A12C4BD292ECB6800F5C425 /* FoodProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12C4BC292ECB6800F5C425 /* FoodProduct.swift */; };
 		0A362CCE2932212C00166289 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CCD2932212C00166289 /* RealmManager.swift */; };
 		0A362CD02933A53100166289 /* ListFoodProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CCF2933A53100166289 /* ListFoodProductsView.swift */; };
 		0A362CD22933A87D00166289 /* UserAcc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD12933A87D00166289 /* UserAcc.swift */; };
 		0A362CD42934089200166289 /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD32934089200166289 /* Daily.swift */; };
 		0A362CD62934096600166289 /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD52934096600166289 /* Nutrition.swift */; };
+		003CBBEC29309A590037C716 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBEB29309A590037C716 /* StartMenu.swift */; };
+		003CBBEE2930A39B0037C716 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBED2930A39B0037C716 /* Stats.swift */; };
+		003CBBF02930A3B50037C716 /* addFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBEF2930A3B50037C716 /* addFood.swift */; };
+		003CBBF22930A3FD0037C716 /* GesFoods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF12930A3FD0037C716 /* GesFoods.swift */; };
+		003CBBF42930A40B0037C716 /* Profil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF32930A40B0037C716 /* Profil.swift */; };
+
 		0A992325292C03A900F68E16 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992323292C03A800F68E16 /* Header.swift */; };
 		0A992326292C03A900F68E16 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992324292C03A900F68E16 /* Footer.swift */; };
 		0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */; };
@@ -24,12 +31,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+
 		0A12C4BC292ECB6800F5C425 /* FoodProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProduct.swift; sourceTree = "<group>"; };
 		0A362CCD2932212C00166289 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		0A362CCF2933A53100166289 /* ListFoodProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFoodProductsView.swift; sourceTree = "<group>"; };
 		0A362CD12933A87D00166289 /* UserAcc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAcc.swift; sourceTree = "<group>"; };
 		0A362CD32934089200166289 /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		0A362CD52934096600166289 /* Nutrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition.swift; sourceTree = "<group>"; };
+
+		003CBBEB29309A590037C716 /* StartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
+		003CBBED2930A39B0037C716 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		003CBBEF2930A3B50037C716 /* addFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFood.swift; sourceTree = "<group>"; };
+		003CBBF12930A3FD0037C716 /* GesFoods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesFoods.swift; sourceTree = "<group>"; };
+		003CBBF32930A40B0037C716 /* Profil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profil.swift; sourceTree = "<group>"; };
+
 		0A992323292C03A800F68E16 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0A992324292C03A900F68E16 /* Footer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
 		0AE4D4F9292BD10C00355CFF /* CaloriesCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +130,13 @@
 				0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */,
 				0AE4D500292BD10E00355CFF /* Assets.xcassets */,
 				0AE4D502292BD10E00355CFF /* Preview Content */,
+
+				003CBBEB29309A590037C716 /* StartMenu.swift */,
+				003CBBED2930A39B0037C716 /* Stats.swift */,
+				003CBBEF2930A3B50037C716 /* addFood.swift */,
+				003CBBF12930A3FD0037C716 /* GesFoods.swift */,
+				003CBBF32930A40B0037C716 /* Profil.swift */,
+
 			);
 			path = CaloriesCounter;
 			sourceTree = "<group>";
@@ -204,16 +226,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				0A362CCE2932212C00166289 /* RealmManager.swift in Sources */,
 				0A362CD02933A53100166289 /* ListFoodProductsView.swift in Sources */,
 				0A362CD62934096600166289 /* Nutrition.swift in Sources */,
 				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
 				0A362CD22933A87D00166289 /* UserAcc.swift in Sources */,
+
+				003CBBF42930A40B0037C716 /* Profil.swift in Sources */,
+				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
+				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
+				003CBBEC29309A590037C716 /* StartMenu.swift in Sources */,
+				003CBBEE2930A39B0037C716 /* Stats.swift in Sources */,
+
 				0A992326292C03A900F68E16 /* Footer.swift in Sources */,
 				0A12C4BD292ECB6800F5C425 /* FoodProduct.swift in Sources */,
 				0A992325292C03A900F68E16 /* Header.swift in Sources */,
 				0A362CD42934089200166289 /* Daily.swift in Sources */,
+				003CBBF02930A3B50037C716 /* addFood.swift in Sources */,
+				003CBBF22930A3FD0037C716 /* GesFoods.swift in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

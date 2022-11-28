@@ -19,6 +19,7 @@ struct CaloriesCounterApp: App {
                     ContentView()
                         .environment(\.realmConfiguration, configuration)
                         .environment(\.realm, realm) // Access for the project
+                    FooterView()
                 }
             }.task {
                 try? await realmManager.initialize() // ladet die published variablen und erst dann wir der Vstack geladen
@@ -26,3 +27,4 @@ struct CaloriesCounterApp: App {
         }
     }
 }
+
