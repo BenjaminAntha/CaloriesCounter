@@ -9,12 +9,7 @@ import Foundation
 import SwiftUI
 
 struct HeaderView: View {
-    
-    
     @State var dateAngezeigt = Datum()
-    
-    
-    
     
     var body: some View {
         Form{
@@ -45,11 +40,7 @@ struct HeaderView: View {
             
         }
         .frame(minWidth: 300, maxWidth: 5000, minHeight: 100, maxHeight: 150)
-   
     }
-    
-    
-        
 }
 
 struct HeaderView_Previews: PreviewProvider {

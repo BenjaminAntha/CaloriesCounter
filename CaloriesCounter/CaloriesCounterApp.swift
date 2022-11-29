@@ -14,15 +14,12 @@ struct CaloriesCounterApp: App {
     
     var body: some Scene {
         WindowGroup {
-
-            
-
             VStack {
+                
                 if let configuration = realmManager.configuration, let realm = realmManager.realm {
-                    HeaderView()
+                    ContentView()
                         .environment(\.realmConfiguration, configuration)
                         .environment(\.realm, realm) // Access for the project
-                    FooterView()
                 }
             }.task {
                 try? await realmManager.initialize() // ladet die published variablen und erst dann wir der Vstack geladen

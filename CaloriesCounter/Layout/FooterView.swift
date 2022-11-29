@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-//testölajfhöalfnaöslnadfas
-
 struct FooterView: View {
         var body: some View {
             TabView {
@@ -17,33 +15,32 @@ struct FooterView: View {
                     .tabItem {
                         Label("Kalender", systemImage: "calendar")
                     }
+                
                 StatsView()
                     .tabItem {
-                        
                         Label("Statistik", systemImage: "chart.bar.xaxis")
                     }
-                addFoodView()
+                
+                AddFoodView()
                     .tabItem {
                         Label("Add", systemImage: "plus")
                     }
+                
                 FoodLogView()
                     .tabItem {
                         Label("Essen", systemImage: "fork.knife")
                     }
+                
                 ProfilView()
                     .tabItem {
                         Label("Profil", systemImage: "person")
                     }
             }
-            
-            .padding()
-            
         }
     }
 
 struct FooterView_Previews: PreviewProvider {
     static var previews: some View {
         FooterView()
-            .previewLayout(.fixed(width: 375, height: 80))
     }
 }

@@ -30,6 +30,7 @@ struct StatsView: View {
         ]
         
         VStack {
+            HeaderView()
                     GroupBox ( "Bar Chart - Calorie Count") {
                         Chart {
                             ForEach(currentWeek) {

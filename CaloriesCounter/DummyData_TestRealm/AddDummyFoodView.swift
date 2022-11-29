@@ -1,16 +1,14 @@
 //
-//  ContentView.swift
+//  AddDummyFoodView.swift
 //  CaloriesCounter
 //
-//  Created by Benjamin Anthamatten on 21.11.22.
+//  Created by Benjamin Anthamatten on 29.11.22.
 //
 
 import SwiftUI
 import RealmSwift
 
-struct ContentView: View {
-    
-    
+struct AddDummyFoodView: View {
     @ObservedResults(FoodProduct.self) var foodProducts: Results<FoodProduct>
     
     var body: some View {
@@ -35,11 +33,9 @@ struct ContentView: View {
         
     }
 }
-    
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+
+struct AddDummyFoodView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddDummyFoodView()
     }
 }
-

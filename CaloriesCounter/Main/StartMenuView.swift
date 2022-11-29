@@ -14,6 +14,7 @@ struct StartMenuView: View {
     var body: some View {
     
         VStack {
+            HeaderView()
                     Spacer()
                     ZStack {
                         // 2
