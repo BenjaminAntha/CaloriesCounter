@@ -10,6 +10,7 @@ import RealmSwift
 
 struct ContentView: View {
     
+    
     @ObservedResults(FoodProduct.self) var foodProducts: Results<FoodProduct>
     
     var body: some View {
@@ -30,11 +31,15 @@ struct ContentView: View {
         print("hello")
         let foodProduct = FoodProduct(Name: "Test", Synonyme: "", Kategorie: "", Bezugseinheit: "", Kilojoule: "sadkf", Fett: "", Kalorien: "", Cholesterin: "", Fettsäuren_gesättigt: "", Kohlenhydrate_verfügbar: "", Nahrungsfasern: "", Zucker: "", Calcium: "", Eisen: "", Kalium: "", Magnesium: "", Natrium: "12", Protein: 123, Salz: "", Vitamin_B1: "", Vitamin_B12: "*", Vitamin_B2: "", Vitamin_B6: "", Vitamin_C: "", Vitamin_D: "", Vitamin_E: "", Wasser: "", Zink: "");
         $foodProducts.append(foodProduct)
+        
+        
+    }
+}
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
