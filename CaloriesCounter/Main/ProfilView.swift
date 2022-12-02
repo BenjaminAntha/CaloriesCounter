@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 
 struct ProfilView: View {
+    @State var isLoggedOut = false
     
     var Markus = Person(name: "Markus", height: 188, weight: 80, age: 45, dailyIntake: 2200)
     
@@ -23,13 +24,16 @@ struct ProfilView: View {
                 Text("Gewicht: " + String(Int(Markus.weight)) + " kg")
                 Text("Kalorien/Tag: " + String(Markus.dailyIntake) + " kcal")
             }
+            Button("Logout", action: logOut)
+        }
+        .onChange(of: isLoggedOut) { isLoggedOut in
+            RealmManager.shared.logout()
         }
         .padding()
-        
-        
-       
-        
-        
+    }
+    
+    func logOut() {
+        isLoggedOut = true
     }
 }
 

@@ -38,9 +38,15 @@ class RealmManager: ObservableObject {
     @MainActor
     func login(emailUser: String, passwordUser: String) async throws{
         user = try await app.login(credentials: Credentials.emailPassword(email: emailUser, password: passwordUser))
-        
     }
     
+    func logout(){
+        app.currentUser?.logOut { (error) in
+            // user is logged out or there was an error
+        }
+        self.user = app.currentUser
+    }
+
     @MainActor // function is exceuted on the Main thread
     func initializeCurrentUser() async throws {
         if user != nil {
