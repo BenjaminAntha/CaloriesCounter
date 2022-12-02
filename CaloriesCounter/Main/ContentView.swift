@@ -9,23 +9,11 @@ import SwiftUI
 import RealmSwift
 
 struct ContentView: View {
-    @State private var username = true
-
     var body: some View {
         NavigationView {
-            if username {
-                FooterView()
-            } else {
-                
-            }
+            FooterView()
         }
     }
 }
     
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
 

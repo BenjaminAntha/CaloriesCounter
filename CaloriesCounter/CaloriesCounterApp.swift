@@ -11,20 +11,30 @@ import SwiftUI
 struct CaloriesCounterApp: App {
     
     @StateObject private var realmManager = RealmManager.shared
+    @State private var loading = true
     
     var body: some Scene {
         WindowGroup {
             VStack {
-                
-                if let configuration = realmManager.configuration, let realm = realmManager.realm {
-                    ContentView()
-                        .environment(\.realmConfiguration, configuration)
-                        .environment(\.realm, realm) // Access for the project
+                if !loading {
+                    if realmManager.user != nil{
+                        if let configuration = realmManager.configuration, let realm = realmManager.realm{
+                            ContentView()
+                                .environment(\.realmConfiguration, configuration)
+                                .environment(\.realm, realm) // Access for the project
+                        }
+                    } else {
+                        LoginView()
+                    }
+                } else {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                 }
+                
             }.task {
-                try? await realmManager.initialize() // ladet die published variablen und erst dann wir der Vstack geladen
+                try? await realmManager.initializeCurrentUser() // ladet die published variablen und erst dann wir der Vstack geladen
+                loading = false
             }
-
         }
     }
 }
