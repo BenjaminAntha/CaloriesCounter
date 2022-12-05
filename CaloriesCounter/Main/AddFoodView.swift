@@ -23,7 +23,6 @@ struct AddFoodView: View {
                     List(foodProducts, id: \._id) { foodProduct in
                                 Text(foodProduct.Name)
                     }
-                    
                 }
             }
         }

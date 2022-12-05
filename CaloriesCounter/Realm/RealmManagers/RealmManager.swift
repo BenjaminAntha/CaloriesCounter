@@ -30,6 +30,7 @@ class RealmManager: ObservableObject {
             // Registering just registers. You can now log in.
             print("Successfully registered user.")
             try await login(emailUser: emailUser, passwordUser: passwordUser)
+           
         } catch {
             print("Failed to register: \(error.localizedDescription)")
         }

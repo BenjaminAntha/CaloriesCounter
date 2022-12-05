@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct CaloriesCounterApp: App {
-    
+
     @StateObject private var realmManager = RealmManager.shared
     @State private var loading = true
     
