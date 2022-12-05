@@ -26,6 +26,8 @@
 		0A362CD62934096600166289 /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD52934096600166289 /* Nutrition.swift */; };
 		0A362CD82936BD7B00166289 /* AddDummyFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD72936BD7B00166289 /* AddDummyFoodView.swift */; };
 		0A362CDF293956E100166289 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CDE293956E100166289 /* LoginView.swift */; };
+		0A362CE1293DF0C400166289 /* AddDummyUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE0293DF0C400166289 /* AddDummyUserView.swift */; };
+		0A362CE3293E525B00166289 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE2293E525B00166289 /* RegisterView.swift */; };
 		0A992325292C03A900F68E16 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992323292C03A800F68E16 /* HeaderView.swift */; };
 		0A992326292C03A900F68E16 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992324292C03A900F68E16 /* FooterView.swift */; };
 		0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */; };
@@ -56,6 +58,8 @@
 		0A362CD52934096600166289 /* Nutrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition.swift; sourceTree = "<group>"; };
 		0A362CD72936BD7B00166289 /* AddDummyFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDummyFoodView.swift; sourceTree = "<group>"; };
 		0A362CDE293956E100166289 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0A362CE0293DF0C400166289 /* AddDummyUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDummyUserView.swift; sourceTree = "<group>"; };
+		0A362CE2293E525B00166289 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		0A992323292C03A800F68E16 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0A992324292C03A900F68E16 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		0AE4D4F9292BD10C00355CFF /* CaloriesCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				0A362CDE293956E100166289 /* LoginView.swift */,
+				0A362CE2293E525B00166289 /* RegisterView.swift */,
 			);
 			path = Register_Login;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				003CBBFD293391B60037C716 /* PersonData.swift */,
 				0A362CD72936BD7B00166289 /* AddDummyFoodView.swift */,
 				0A362CCF2933A53100166289 /* ListFoodProductsView.swift */,
+				0A362CE0293DF0C400166289 /* AddDummyUserView.swift */,
 			);
 			path = DummyData_TestRealm;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
 				0A362CD22933A87D00166289 /* UserAcc.swift in Sources */,
 				0A362CD82936BD7B00166289 /* AddDummyFoodView.swift in Sources */,
+				0A362CE3293E525B00166289 /* RegisterView.swift in Sources */,
 				003CBBF42930A40B0037C716 /* ProfilView.swift in Sources */,
 				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
@@ -295,6 +302,7 @@
 				0A12C4BD292ECB6800F5C425 /* FoodProduct.swift in Sources */,
 				0A992325292C03A900F68E16 /* HeaderView.swift in Sources */,
 				003CBBFC29321A3F0037C716 /* Person.swift in Sources */,
+				0A362CE1293DF0C400166289 /* AddDummyUserView.swift in Sources */,
 				003CBBF02930A3B50037C716 /* AddFoodView.swift in Sources */,
 				0A362CDF293956E100166289 /* LoginView.swift in Sources */,
 				003CBBF22930A3FD0037C716 /* FoodLog.swift in Sources */,
