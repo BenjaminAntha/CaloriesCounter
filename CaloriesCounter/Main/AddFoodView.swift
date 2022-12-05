@@ -12,10 +12,15 @@ import RealmSwift
 struct AddFoodView: View {
     @State private var searchText = ""
     @ObservedResults(FoodProduct.self) var foodProducts: Results<FoodProduct>
-
+    @State var showEditAddFood = false
         var body: some View {
             NavigationView {
                 VStack {
+                    
+                    Button("edit", action: {
+                        showEditAddFood.toggle()
+                    })
+                    NavigationLink("", destination: AddDummyFoodView(), isActive: $showEditAddFood)
                     Text("")
                         .searchable(text: $searchText)
                         .navigationTitle("Add your Food")
