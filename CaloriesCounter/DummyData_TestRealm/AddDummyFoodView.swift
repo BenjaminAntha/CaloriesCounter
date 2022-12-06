@@ -10,13 +10,23 @@ import RealmSwift
 
 struct AddDummyFoodView: View {
     @ObservedResults(FoodProduct.self) var foodProducts: Results<FoodProduct>
+    @State var name: String = ""
+    @State var calories: String = ""
+    
     
     var body: some View {
+        
+        Form{
+            TextField("Name", text: $name)
+            TextField("Kalorien", text: $calories)
+        }
         NavigationView {
             VStack {
-                Button(action: addProduct){
-                    Text("Add Product")
-                }
+                Button(action: {
+                    addProduct(name: name, Kalorien: calories)
+                }, label: {
+                  Text("add Food")
+                })
                 ListFoodProductsView()
             }.navigationTitle("FOODPRODUCTS")
             
@@ -25,9 +35,10 @@ struct AddDummyFoodView: View {
         }
     }
     
-    func addProduct() {
+    func addProduct(name: String, Kalorien: String){
+        
         print("hello")
-        let foodProduct = FoodProduct(Name: "Test", Synonyme: "", Kategorie: "", Bezugseinheit: "", Kilojoule: "sadkf", Fett: "", Kalorien: "", Cholesterin: "", Fettsäuren_gesättigt: "", Kohlenhydrate_verfügbar: "", Nahrungsfasern: "", Zucker: "", Calcium: "", Eisen: "", Kalium: "", Magnesium: "", Natrium: "12", Protein: 123, Salz: "", Vitamin_B1: "", Vitamin_B12: "*", Vitamin_B2: "", Vitamin_B6: "", Vitamin_C: "", Vitamin_D: "", Vitamin_E: "", Wasser: "", Zink: "");
+        let foodProduct = FoodProduct(Name: name, Synonyme: "", Kategorie: "", Bezugseinheit: "", Kilojoule: "sadkf", Fett: "", Kalorien: Kalorien, Cholesterin: "", Fettsäuren_gesättigt: "", Kohlenhydrate_verfügbar: "", Nahrungsfasern: "", Zucker: "", Calcium: "", Eisen: "", Kalium: "", Magnesium: "", Natrium: "12", Protein: 123, Salz: "", Vitamin_B1: "", Vitamin_B12: "*", Vitamin_B2: "", Vitamin_B6: "", Vitamin_C: "", Vitamin_D: "", Vitamin_E: "", Wasser: "", Zink: "");
         $foodProducts.append(foodProduct)
         
         
