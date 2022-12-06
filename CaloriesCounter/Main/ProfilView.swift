@@ -15,6 +15,7 @@ struct ProfilView: View {
     var currentuser: UserAcc? {
         userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
     }
+    
     @State var isLoggedOut: Bool = false
     
     var Markus = Person(name: "Markus", height: 188, weight: 80, age: 45, dailyIntake: 2200)

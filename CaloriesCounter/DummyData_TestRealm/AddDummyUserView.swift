@@ -33,31 +33,10 @@ struct AddDummyUserView: View {
                    case .failure(let error):
                        print("Failed to refresh custom data: \(error.localizedDescription)")
                    case .success(let customData):
-                       // favoriteColor was set on the custom data.
                        print(customData)
                        return
                    }
                }
-    }
-    
-    func addUserAcc() {
-        let client = RealmManager.shared.user?.mongoClient("mongodb-atlas")
-        let database = client!.database(named: "CaloriesCounter")
-        let collection = database.collection(withName: "UserAcc")
-                // Insert the custom user data object
-        collection.insertOne([
-            "goal": AnyBSON(RealmManager.shared.user!.id),
-            "sex": "pink"
-        ]) { (result) in
-            switch result {
-            case .failure(let error):
-                print("Failed to insert document: \(error.localizedDescription)")
-            case .success(let newObjectId):
-                print("Inserted custom user data document with object ID: \(newObjectId)")
-            }
-        }
-        
-        
     }
     
     func addUser(){
