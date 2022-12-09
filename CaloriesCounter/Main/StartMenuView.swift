@@ -11,14 +11,20 @@ import SwiftUI
 
 struct StartMenuView: View {
     @State var progress: Double = 0
+    
+    
     var body: some View {
     
         VStack {
-            HeaderView()
+            
+            
+                
+                
                     Spacer()
                     ZStack {
                         // 2
                         ProgressCircleView(progress: progress)
+                        
                         // 3
                         Text("\(progress * 100, specifier: "%.0f")")
                             .font(.largeTitle)
@@ -32,6 +38,7 @@ struct StartMenuView: View {
                                 resetProgress()
                             }.buttonStyle(.borderedProminent)
                         }
+                .padding()
                     
     
         Spacer()
@@ -57,20 +64,29 @@ struct StartMenuView: View {
                 }
                 .padding()
             }
+            .position(x: 150, y: -50)
                 .fontWeight(.light)
                 .font(.system(size: 15))
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
                 .padding(0)
                 .frame(width: 300, height: 75)
-                .background(Rectangle().fill(Color.white).shadow(radius: 3))
+                .background(Rectangle().fill(Color.white).shadow(radius: 3).position(x: 150, y: -50))
                 
                 .multilineTextAlignment(.center)
                 
+            
                 
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        
+        
+        
+        
+        
+       
     }
+    
     func resetProgress() {
         progress = 0
     }

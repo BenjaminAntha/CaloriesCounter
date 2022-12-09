@@ -33,6 +33,9 @@ struct LoginView: View {
                     .textFieldStyle(.roundedBorder)
                 SecureField("Password", text: $password)
                     .textFieldStyle(.roundedBorder)
+                Text("Once you log in, the App will remember you!")
+                    .padding()
+                    .multilineTextAlignment(.center)
                 Spacer()
                 Button("Log In") {
                     // Button pressed, so log in
@@ -53,6 +56,7 @@ struct LoginView: View {
                         .font(.headline)
                         .foregroundColor(.accentColor)
                 }
+                .padding()
                 
                 
                 
@@ -71,9 +75,11 @@ struct LoginView: View {
                 .foregroundColor(.white)
                 .clipShape(Capsule()) */
                 
-                Spacer()
+               
                 
             }
+            .foregroundColor(.gray)
+            .padding()
         }
     }
         

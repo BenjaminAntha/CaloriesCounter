@@ -9,7 +9,10 @@ import Foundation
 import SwiftUI
 
 struct HeaderView: View {
-    @State var dateAngezeigt = Datum()
+   
+    
+    @State var dateAngezeigt: Date = Date()
+    @State var timeInterval : Double = 0
     
     var body: some View {
         Form{
@@ -21,25 +24,43 @@ struct HeaderView: View {
                 }
                 
                 HStack{
+                    
                     Button() {
-                        dateAngezeigt.changeDateBack()
+                        changeDateBack()
                     }label: {
                         Image(systemName: "arrow.left")
                     }.buttonStyle(.borderedProminent)
                     
-                    Text(dateAngezeigt.dateAngezeigt, format: .dateTime.day().month().year())
+                    Text(dateAngezeigt, format: .dateTime.day().month().year())
                         .padding()
                         .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
                     Button() {
-                        dateAngezeigt.changeDateForward()
+                        changeDateForward()
                     }label: {
                         Image(systemName: "arrow.right")
                     }.buttonStyle(.borderedProminent)
+                        .foregroundColor(.white)
                 }
             }
-            
+            .frame(maxWidth: .infinity, maxHeight: 170)
+     
         }
-        .frame(minWidth: 300, maxWidth: 5000, minHeight: 100, maxHeight: 150)
+        
+       
+    
+    }
+    
+    func changeDateBack(){
+        timeInterval = timeInterval - 86400
+        dateAngezeigt = Date().addingTimeInterval(timeInterval)
+        print("date back")
+        
+    }
+    
+    func changeDateForward(){
+        timeInterval = timeInterval + 86400
+        dateAngezeigt = Date().addingTimeInterval(timeInterval)
+        print("date forward")
     }
 }
 

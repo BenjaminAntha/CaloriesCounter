@@ -10,6 +10,8 @@ import SwiftUI
 import RealmSwift
 
 struct FooterView: View {
+    
+    let footerColor = UIColor.white
     @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
     
     var currentuser: UserAcc? {
@@ -21,27 +23,60 @@ struct FooterView: View {
                     .tabItem {
                         Label("Kalender", systemImage: "calendar")
                     }
+                    .toolbarBackground(
+
+                            // 1
+                            Color.yellow,
+                            // 2
+                            for: .tabBar)
                 
                 StatsView()
                     .tabItem {
                         Label("Statistik", systemImage: "chart.bar.xaxis")
                     }
+                    .toolbarBackground(
+
+                            // 1
+                            Color.red,
+                            // 2
+                            for: .tabBar)
                 
                 AddFoodView()
                     .tabItem {
                         Label("Add", systemImage: "plus")
                     }
+                    .toolbarBackground(
+
+                            // 1
+                            Color.red,
+                            // 2
+                            for: .tabBar)
+                    
                 
                 FoodLogView()
                     .tabItem {
                         Label("Essen", systemImage: "fork.knife")
                     }
+                    .toolbarBackground(
+
+                            // 1
+                            Color.red,
+                            // 2
+                            for: .tabBar)
                 
                 ProfilView()
                     .tabItem {
                         Label("Profil", systemImage: "person")
                     }
+                    .toolbarBackground(
+
+                            // 1
+                            Color.red,
+                            // 2
+                            for: .tabBar)
             }.onAppear(perform: adduser)
+                
+                
         }
     
         func adduser() {

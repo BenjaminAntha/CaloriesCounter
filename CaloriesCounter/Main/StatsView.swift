@@ -11,44 +11,46 @@ import SwiftUI
 
 struct StatsView: View {
     var body: some View {
-       
-        
-        //let data: [ToyShape] = [
-       //     .init(day: today , calories: 300),
-     //       .init(day: yesterday, calories:  400),
-   //
- //       ]
-        
-        let currentWeek: [CaloriesPerDay] = [
-            CaloriesPerDay(day: "20220717", calories: 4200),
-            CaloriesPerDay(day: "20220718", calories: 3000),
-            CaloriesPerDay(day: "20220719", calories: 2800),
-            CaloriesPerDay(day: "20220720", calories: 2000),
-            CaloriesPerDay(day: "20220721", calories: 2000),
-            CaloriesPerDay(day: "20220722", calories: 1980),
-            CaloriesPerDay(day: "20220723", calories: 1900)
-        ]
-        
-        VStack {
-            HeaderView()
-                    GroupBox ( "Bar Chart - Calorie Count") {
-                        Chart {
-                            ForEach(currentWeek) {
-                                BarMark(
-                                    x: .value("Week Day", $0.day, unit: .day),
-                                    y: .value("Step Count", $0.calories)
-                                )
-                            }
+        NavigationView{
+            
+            
+            //let data: [ToyShape] = [
+            //     .init(day: today , calories: 300),
+            //       .init(day: yesterday, calories:  400),
+            //
+            //       ]
+            
+            let currentWeek: [CaloriesPerDay] = [
+                CaloriesPerDay(day: "20220717", calories: 4200),
+                CaloriesPerDay(day: "20220718", calories: 3000),
+                CaloriesPerDay(day: "20220719", calories: 2800),
+                CaloriesPerDay(day: "20220720", calories: 2000),
+                CaloriesPerDay(day: "20220721", calories: 2000),
+                CaloriesPerDay(day: "20220722", calories: 1980),
+                CaloriesPerDay(day: "20220723", calories: 1900)
+            ]
+            
+            VStack {
+                
+                GroupBox ( "Bar Chart - Calorie Count") {
+                    Chart {
+                        ForEach(currentWeek) {
+                            BarMark(
+                                x: .value("Week Day", $0.day, unit: .day),
+                                y: .value("Step Count", $0.calories)
+                            )
                         }
                     }
-                    .padding()
-                    
-                    
                 }
+                .padding()
+                
+                
+            }
             
-                
-                
-        
+            
+            
+            
+        }
     }
 }
 

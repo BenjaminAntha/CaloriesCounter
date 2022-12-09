@@ -20,22 +20,26 @@ struct ProfilView: View {
     var Markus = Person(name: "Markus", height: 188, weight: 80, age: 45, dailyIntake: 2200)
     
     var body: some View {
-       
-        Form{
-            Section(header: Text("Profil:")){
-                Text("Vorname: " + currentuser!.firstName)
-                Text("Nachname: " + currentuser!.lastName)
-                Text("Grösse: " + String(currentuser!.bodyHeight) + " cm")
-                Text("Gewicht: " + String(currentuser!.weight) + " kg")
-                Text("Kalorien/Tag: " + String(currentuser!.caloriesGoal) + " kcal")
+        NavigationView{
+            
+            
+            
+            Form{
+                Section(header: Text("Profil:")){
+                    Text("Vorname: " + currentuser!.firstName)
+                    Text("Nachname: " + currentuser!.lastName)
+                    Text("Grösse: " + String(currentuser!.bodyHeight) + " cm")
+                    Text("Gewicht: " + String(currentuser!.weight) + " kg")
+                    Text("Kalorien/Tag: " + String(currentuser!.caloriesGoal) + " kcal")
+                }
+                Button("Logout", action: logOut)
             }
-            Button("Logout", action: logOut)
+            .onChange(of: isLoggedOut) { isLoggedOut in
+                RealmManager.shared.logout()
+            }
+            .padding()
+            .onAppear(perform: adduser)
         }
-        .onChange(of: isLoggedOut) { isLoggedOut in
-            RealmManager.shared.logout()
-        }
-        .padding()
-        .onAppear(perform: adduser)
     }
     
     func logOut() {

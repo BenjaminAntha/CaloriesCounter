@@ -10,9 +10,17 @@ import RealmSwift
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            FooterView()
-        }
+        
+        HeaderView()
+            .frame(maxWidth: .infinity, maxHeight: 170)
+            
+        FooterView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+        
+        
+        
+        
     }
 }
     

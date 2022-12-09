@@ -14,39 +14,43 @@ struct FoodLogView: View {
     @State var inputText: String = ""
     
     var body: some View {
-        VStack{
-            HeaderView()
-            Form{
-                Section(header: Text("input:")){
-                    TextField("Add some text here", text: $inputText)
-                }
+        NavigationView{
+            
+            
+            
+            VStack{
                 
-                Section(header: Text("letter count: ")){
-                    let charCount = inputText.filter { $0 != " " }.count
-                    
-                    if (charCount > 30){
-                        Text(String(charCount)).foregroundColor(.red)
-                    } else {
-                        inputText == "" ? Text("Empty") : Text(String(charCount))
+                Spacer()
+                Section{
+                    VStack{
+                        Text("This is what you ate Today")
+                            .padding()
+                        
+                        List{
+                            Section {
+                                
+                                HStack {
+                                    Text("Apple")
+                                    Spacer()
+                                    Text("300")
+                                }
+                            } header: {
+                                HStack {
+                                    Text("Food")
+                                    Spacer()
+                                    Text("Kcal")
+                                }
+                            }
+                            
+                            
+                        }
                     }
                 }
-                Section(header: Text("Actions:")) {
-                    Button("Save Data") {
-                        UserDefaults.standard.set(inputText, forKey: "TEXT_KEY")
-                        text = inputText
-                        print("Saved value: \(inputText)")
-                    }
-                }
                 
-                Section(header: Text("Saved Data")){
-                    
-                    Text(text).lineLimit(10)
-                    
-                }
+                
             }
-            .padding()
+            
         }
-        
     }
 }
 
