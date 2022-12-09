@@ -15,12 +15,13 @@ struct FoodLogView: View {
     
     var body: some View {
         NavigationView{
-            
-            
-            
+
             VStack{
+                HeaderView()
+                    .frame(maxWidth: .infinity, maxHeight: 170)
+                    .offset(x: 0, y: -17)
                 
-                Spacer()
+                
                 Section{
                     VStack{
                         Text("This is what you ate Today")
@@ -41,9 +42,25 @@ struct FoodLogView: View {
                                     Text("Kcal")
                                 }
                             }
+                            Section {
+                                
+                                HStack {
+                                    Text("Water")
+                                    Spacer()
+                                    Text("1000")
+                                }
+                            } header: {
+                                HStack {
+                                    Text("Liquid")
+                                    Spacer()
+                                    Text("ml")
+                                }
+                            }
                             
                             
                         }
+                        
+
                     }
                 }
                 

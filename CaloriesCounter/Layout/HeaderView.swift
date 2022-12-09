@@ -15,36 +15,45 @@ struct HeaderView: View {
     @State var timeInterval : Double = 0
     
     var body: some View {
-        Form{
-            VStack {
-                HStack {
-                    Text("Kalorienzähler").multilineTextAlignment(.center)
+        Color.green.opacity(1.5)
+            .ignoresSafeArea()
+            .overlay(
+                
+                VStack {
+                    HStack {
+                        Text("Kalorienzähler").multilineTextAlignment(.center)
+                            .padding()
+                            .frame(maxWidth: 200, maxHeight: 35, alignment: .center)
+                            .fontWeight(.bold)
+                    }
+                    
+                    HStack{
+                        
+                        Button(action: {changeDateBack()}) {
+                            Image(systemName: "arrow.left")
+                        }.buttonStyle(.borderedProminent)
+                            .foregroundColor(.white)
+                        .tint(.green)
                         .padding()
-                        .frame(maxWidth: 200, maxHeight: 35, alignment: .center)
+                        
+                        Text(dateAngezeigt, format: .dateTime.day().month().year())
+                            .padding()
+                            .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
+                            .fontWeight(.bold)
+                            
+                        Button(action: {changeDateForward()}) {
+                            Image(systemName: "arrow.right")
+                        }.buttonStyle(.borderedProminent)
+                            .foregroundColor(.white)
+                        .tint(.green)
+                        .padding()
+                    }
                 }
                 
-                HStack{
-                    
-                    Button() {
-                        changeDateBack()
-                    }label: {
-                        Image(systemName: "arrow.left")
-                    }.buttonStyle(.borderedProminent)
-                    
-                    Text(dateAngezeigt, format: .dateTime.day().month().year())
-                        .padding()
-                        .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
-                    Button() {
-                        changeDateForward()
-                    }label: {
-                        Image(systemName: "arrow.right")
-                    }.buttonStyle(.borderedProminent)
-                        .foregroundColor(.white)
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: 170)
-     
-        }
+         
+            )
+        
+        .frame(maxWidth: .infinity, maxHeight: 170)
         
        
     

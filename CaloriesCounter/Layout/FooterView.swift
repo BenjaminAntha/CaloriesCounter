@@ -19,62 +19,54 @@ struct FooterView: View {
     }
         var body: some View {
             TabView {
-                StartMenuView()
-                    .tabItem {
-                        Label("Kalender", systemImage: "calendar")
-                    }
-                    .toolbarBackground(
-
-                            // 1
-                            Color.yellow,
-                            // 2
-                            for: .tabBar)
+                VStack {
+                    StartMenuView()
+                }
+                        .tabItem {
+                            Label("Kalender", systemImage: "calendar")
+                        }
                 
-                StatsView()
-                    .tabItem {
-                        Label("Statistik", systemImage: "chart.bar.xaxis")
-                    }
-                    .toolbarBackground(
-
-                            // 1
-                            Color.red,
-                            // 2
-                            for: .tabBar)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                AddFoodView()
+                    
+                
+                VStack {
+                    StatsView()
+                }
+                        .tabItem {
+                            Label("Statistik", systemImage: "chart.bar.xaxis")
+                        }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+               
+                    
+                VStack{
+                    AddFoodView()
+                }
                     .tabItem {
                         Label("Add", systemImage: "plus")
                     }
-                    .toolbarBackground(
-
-                            // 1
-                            Color.red,
-                            // 2
-                            for: .tabBar)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .foregroundColor(Color("lightGrayRB"))
                     
-                
-                FoodLogView()
+                VStack{
+                    FoodLogView()
+                }
                     .tabItem {
                         Label("Essen", systemImage: "fork.knife")
                     }
-                    .toolbarBackground(
-
-                            // 1
-                            Color.red,
-                            // 2
-                            for: .tabBar)
-                
-                ProfilView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                VStack{
+                    ProfilView()
+                }
                     .tabItem {
                         Label("Profil", systemImage: "person")
                     }
-                    .toolbarBackground(
-
-                            // 1
-                            Color.red,
-                            // 2
-                            for: .tabBar)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
             }.onAppear(perform: adduser)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
                 
                 
         }

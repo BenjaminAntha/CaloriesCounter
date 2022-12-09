@@ -31,6 +31,9 @@ struct StatsView: View {
             ]
             
             VStack {
+                HeaderView()
+                    .frame(maxWidth: .infinity, maxHeight: 170)
+                    .offset(x: 0, y: -17)
                 
                 GroupBox ( "Bar Chart - Calorie Count") {
                     Chart {
@@ -39,6 +42,7 @@ struct StatsView: View {
                                 x: .value("Week Day", $0.day, unit: .day),
                                 y: .value("Step Count", $0.calories)
                             )
+                            .foregroundStyle(Color.green)
                         }
                     }
                 }

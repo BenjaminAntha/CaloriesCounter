@@ -37,7 +37,7 @@ struct ProfilView: View {
             .onChange(of: isLoggedOut) { isLoggedOut in
                 RealmManager.shared.logout()
             }
-            .padding()
+            
             .onAppear(perform: adduser)
         }
     }

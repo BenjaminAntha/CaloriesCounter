@@ -16,23 +16,33 @@ struct AddDummyFoodView: View {
     
     var body: some View {
         
-        Form{
-            TextField("Name", text: $name)
-            TextField("Kalorien", text: $calories)
-        }
+        
         NavigationView {
-            VStack {
-                Button(action: {
-                    addProduct(name: name, Kalorien: calories)
-                }, label: {
-                  Text("add Food")
-                })
-                ListFoodProductsView()
-            }.navigationTitle("FOODPRODUCTS")
             
-            
-            
+                    VStack {
+                        Form{
+                            
+                            TextField("Name", text: $name)
+                            TextField("Kalorien", text: $calories)
+                            
+                        }
+                        .overlay(Button(action: {
+                            addProduct(name: name, Kalorien: calories)
+                            name = ""
+                            calories = ""
+                        }, label: {
+                          Text("add Food")
+                        })
+                        .padding()
+                        .buttonStyle(.borderedProminent)
+                        .foregroundColor(.white)
+                        .tint(.green))
+                        
+                        
+                    }
+ 
         }
+        
     }
     
     func addProduct(name: String, Kalorien: String){

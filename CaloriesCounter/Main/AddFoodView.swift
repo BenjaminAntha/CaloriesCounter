@@ -17,10 +17,14 @@ struct AddFoodView: View {
             NavigationView {
                 VStack {
                     
-                    Button("edit", action: {
+                    Button("add Food", action: {
                         showEditAddFood.toggle()
                     })
-                    NavigationLink("", destination: AddDummyFoodView(), isActive: $showEditAddFood)
+                    .buttonStyle(.borderedProminent)
+                    .foregroundColor(.white)
+                    .tint(.green)
+                    NavigationLink("", destination: AddDummyFoodView()
+                        , isActive: $showEditAddFood)
                     Text("")
                         .searchable(text: $searchText)
                         .navigationTitle("Add your Food")
