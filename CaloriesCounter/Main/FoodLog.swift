@@ -17,17 +17,18 @@ struct FoodLogView: View {
         NavigationView{
 
             VStack{
-                HeaderView()
-                    .frame(maxWidth: .infinity, maxHeight: 170)
-                    .offset(x: 0, y: -17)
+            
                 
                 
                 Section{
                     VStack{
-                        Text("This is what you ate Today")
-                            .padding()
+                        
+                        
                         
                         List{
+                            Text("This is what you consumed Today")
+                                .padding()
+                                .fontWeight(.bold)
                             Section {
                                 
                                 HStack {

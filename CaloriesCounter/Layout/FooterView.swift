@@ -65,6 +65,7 @@ struct FooterView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
             }.onAppear(perform: adduser)
+                .edgesIgnoringSafeArea(.top)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
                 

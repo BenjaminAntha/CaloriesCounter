@@ -33,7 +33,7 @@ struct StatsView: View {
             VStack {
                 HeaderView()
                     .frame(maxWidth: .infinity, maxHeight: 170)
-                    .offset(x: 0, y: -17)
+                    .offset(x: 0, y: -17.5)
                 
                 GroupBox ( "Bar Chart - Calorie Count") {
                     Chart {

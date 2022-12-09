@@ -16,22 +16,25 @@ struct AddFoodView: View {
         var body: some View {
             NavigationView {
                 VStack {
-                    
-                    Button("add Food", action: {
-                        showEditAddFood.toggle()
-                    })
-                    .buttonStyle(.borderedProminent)
-                    .foregroundColor(.white)
-                    .tint(.green)
-                    NavigationLink("", destination: AddDummyFoodView()
-                        , isActive: $showEditAddFood)
-                    Text("")
-                        .searchable(text: $searchText)
-                        .navigationTitle("Add your Food")
-                    
-                    List(foodProducts, id: \._id) { foodProduct in
-                                Text(foodProduct.Name)
+                
+                    Section{
+                        Button("add Food", action: {
+                            showEditAddFood.toggle()
+                        })
+                        .buttonStyle(.borderedProminent)
+                        .foregroundColor(.white)
+                        .tint(.green)
+                        NavigationLink("", destination: AddDummyFoodView()
+                            , isActive: $showEditAddFood)
+                        Text("")
+                            .searchable(text: $searchText)
+                            .navigationTitle("Add your Food")
+                        
+                        List(foodProducts, id: \._id) { foodProduct in
+                                    Text(foodProduct.Name)
+                        }
                     }
+                    
                 }
             }
         }
