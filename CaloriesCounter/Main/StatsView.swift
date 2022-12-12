@@ -8,47 +8,133 @@
 import Foundation
 import Charts
 import SwiftUI
+import RealmSwift
 
 struct StatsView: View {
+    @State var date = Date()
+    @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
+        
+    var currentuser: UserAcc {
+        userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
+    }
+    
+    var daily: Daily {
+        var k = Daily()
+        for d in currentuser.daily {
+            if d.date == date.formatted(.dateTime.year().month().day()){
+                k = d
+            }
+        }
+        return k
+    }
+    
+    @State var currentWeek: [CaloriesPerDay] = [CaloriesPerDay(day: "", calories: 0)]
+    
     var body: some View {
-       
-        
-        //let data: [ToyShape] = [
-       //     .init(day: today , calories: 300),
-     //       .init(day: yesterday, calories:  400),
-   //
- //       ]
-        
-        let currentWeek: [CaloriesPerDay] = [
-            CaloriesPerDay(day: "20220717", calories: 4200),
-            CaloriesPerDay(day: "20220718", calories: 3000),
-            CaloriesPerDay(day: "20220719", calories: 2800),
-            CaloriesPerDay(day: "20220720", calories: 2000),
-            CaloriesPerDay(day: "20220721", calories: 2000),
-            CaloriesPerDay(day: "20220722", calories: 1980),
-            CaloriesPerDay(day: "20220723", calories: 1900)
-        ]
-        
         VStack {
-            HeaderView()
-                    GroupBox ( "Bar Chart - Calorie Count") {
-                        Chart {
-                            ForEach(currentWeek) {
-                                BarMark(
-                                    x: .value("Week Day", $0.day, unit: .day),
-                                    y: .value("Step Count", $0.calories)
-                                )
-                            }
-                        }
+            HeaderView(dateAngezeigt: $date).onChange(of: date) { d in
+                getWeek()
+            }
+            GroupBox ( "Bar Chart - Calorie Count") {
+                Chart {
+                    
+                    ForEach(currentWeek) {
+                        BarMark(
+                            x: .value("Week Day", $0.day, unit: .day),
+                            y: .value("Step Count", $0.calories)
+                        )
                     }
-                    .padding()
-                    
-                    
+                    RuleMark(y: .value("Goal", 2000))
+                        .foregroundStyle(.orange)
+                        .lineStyle(StrokeStyle(lineWidth: 1, dash: [5]))
+                        .annotation(alignment: .leading){
+                            Text("Goal")
+                                .font(.caption)
+                                .foregroundColor(.orange)
+                        }
                 }
-            
-                
-                
+            }
+            .padding()
+           
+        }.onAppear(perform: getWeek)
+    }
+    
+    func getWeek(){
+        var dateComponent = DateComponents()
         
+        let dateFormatter = DateFormatter()
+        let d: Date
+        
+        // Set Date Format
+        dateFormatter.dateFormat = "d. MMM. y"
+        
+        if daily.date == "" {
+            d = date
+        }else{
+            d = dateFormatter.date(from: daily.date)!
+        }
+        
+        
+        dateComponent.day = -1
+        var datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
+        let yesterday = getDaily(datePlaceholder: datePlaceholder)
+        print(yesterday.caloriesEaten)
+        
+        dateComponent.day = -2
+        datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
+        let byesterday = getDaily(datePlaceholder: datePlaceholder)
+        print(byesterday.caloriesEaten)
+        
+        dateComponent.day = -3
+        datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
+        let bbyesterday = getDaily(datePlaceholder: datePlaceholder)
+        
+        dateComponent.day = -4
+        datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
+        let bbbyesterday = getDaily(datePlaceholder: datePlaceholder)
+        
+        dateComponent.day = -5
+        datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
+        let bbbbyesterday = getDaily(datePlaceholder: datePlaceholder)
+        
+        
+        dateComponent.day = -6
+        datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
+        let bbbbbyesterday = getDaily(datePlaceholder: datePlaceholder)
+        
+        
+        if daily.date == "" {
+            currentWeek = [
+                        CaloriesPerDay(day: bbbbbyesterday.date, calories: bbbbbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: bbbbyesterday.date, calories: bbbbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: bbbyesterday.date, calories: bbbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: bbyesterday.date, calories: bbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: byesterday.date, calories: byesterday.caloriesEaten),
+                        CaloriesPerDay(day: yesterday.date, calories: yesterday.caloriesEaten),
+                        CaloriesPerDay(day: date.formatted(.dateTime.year().month().day()), calories: daily.caloriesEaten)
+                    ]
+        }else{
+            currentWeek = [
+                        CaloriesPerDay(day: bbbbbyesterday.date, calories: bbbbbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: bbbbyesterday.date, calories: bbbbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: bbbyesterday.date, calories: bbbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: bbyesterday.date, calories: bbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: byesterday.date, calories: bbyesterday.caloriesEaten),
+                        CaloriesPerDay(day: yesterday.date, calories: yesterday.caloriesEaten),
+                        CaloriesPerDay(day: daily.date, calories: daily.caloriesEaten)
+                    ]
+        }
+    }
+    
+    func getDaily(datePlaceholder: Date) -> Daily{
+        for b in currentuser.daily {
+            if b.date == datePlaceholder.formatted(.dateTime.year().month().day()){
+                return b
+            }
+        }
+        let defaultDaily = Daily()
+        defaultDaily.date = datePlaceholder.formatted(.dateTime.year().month().day())
+        return defaultDaily
     }
 }
 
@@ -64,12 +150,12 @@ struct CaloriesPerDay: Identifiable {
     var id = UUID()
     
     init(day: String, calories: Double) {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyyMMdd"
-            
-            self.day = formatter.date(from: day) ?? Date.distantPast
-            self.calories = calories
-        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d. MMM. y"
+        
+        self.day = formatter.date(from: day) ?? Date.distantPast
+        self.calories = calories
+    }
 }
 
 

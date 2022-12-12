@@ -11,7 +11,9 @@ import RealmSwift
 
 struct AddFoodView: View {
     @State private var searchText = ""
+    @ObservedRealmObject var currentUser: UserAcc
     @ObservedResults(FoodProduct.self) var foodProducts: Results<FoodProduct>
+    
     @State var showEditAddFood = false
         var body: some View {
             NavigationView {
@@ -25,9 +27,19 @@ struct AddFoodView: View {
                         .searchable(text: $searchText)
                         .navigationTitle("Add your Food")
                     
+                    /*
                     List(foodProducts, id: \._id) { foodProduct in
-                                Text(foodProduct.Name)
+                            Text(foodProduct.Name)
                     }
+                    */
+                    
+                    List{
+                        ForEach(foodProducts) { foodProduct in
+                            NavigationLink(destination: FoodDetailView(currentUser: currentUser ,foodProduct: foodProduct)) {
+                                Text(foodProduct.Name)
+                            }
+                        }
+                    }.navigationBarTitle("Back")
                 }
             }
         }
@@ -35,6 +47,6 @@ struct AddFoodView: View {
 
 struct addFoodView_Previews: PreviewProvider {
     static var previews: some View {
-       AddFoodView()
+       AddFoodView(currentUser: UserAcc())
     }
 }

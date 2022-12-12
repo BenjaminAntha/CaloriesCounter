@@ -41,15 +41,12 @@ struct RegisterView: View {
     }
     
     func addUser() async{
-        try? await RealmManager.shared.register(emailUser: email, passwordUser: pw)
-        try? await RealmManager.shared.initialize()
-        //let userA = UserAcc(firstName: firstName, lastName: lastName, sex: "m", birthdate: Date(), bodyHeight: 22, goal: Goal.holdWeight, weight: 22, weightGoal: "22", caloriesGoal: 22, userId: email)
-        
-        //$userAccs.append(userA)
         UserAcc.currentuser.firstName = firstName
         UserAcc.currentuser.lastName = lastName
-     
-        //print($userAccs)
+        print(UserAcc.currentuser)
+        try? await RealmManager.shared.register(emailUser: email, passwordUser: pw)
+        try? await RealmManager.shared.initialize()
+       
     }
 }
 

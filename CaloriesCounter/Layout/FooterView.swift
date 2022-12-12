@@ -11,23 +11,25 @@ import RealmSwift
 
 struct FooterView: View {
     @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
+    @Environment(\.realm) var realm
     
     var currentuser: UserAcc? {
         userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
     }
         var body: some View {
             TabView {
-                StartMenuView()
+                
+                StartMenuView(currentUser: currentuser ?? UserAcc())
                     .tabItem {
                         Label("Kalender", systemImage: "calendar")
                     }
-                
                 StatsView()
                     .tabItem {
                         Label("Statistik", systemImage: "chart.bar.xaxis")
                     }
                 
-                AddFoodView()
+                
+                AddFoodView(currentUser: currentuser ?? UserAcc())
                     .tabItem {
                         Label("Add", systemImage: "plus")
                     }
@@ -37,18 +39,24 @@ struct FooterView: View {
                         Label("Essen", systemImage: "fork.knife")
                     }
                 
-                ProfilView()
+                ProfilView(currentUser: currentuser ?? UserAcc())
                     .tabItem {
                         Label("Profil", systemImage: "person")
                     }
-            }.onAppear(perform: adduser)
+            }.task{
+                await adduser()
+                print("added user")
+            }
         }
     
-        func adduser() {
+        func adduser() async{
             if (currentuser?.weight == 0) {
-                let userA = UserAcc(firstName: UserAcc.currentuser.firstName, lastName: UserAcc.currentuser.lastName, sex: "m", birthdate: Date(), bodyHeight: 22, goal: Goal.holdWeight, weight: 22, weightGoal: "22", caloriesGoal: 22, userId: RealmManager.shared.user!.id)
-                
-                $userAccs.append(userA)
+                try? realm.write{
+                    let userA = UserAcc(firstName: UserAcc.currentuser.firstName, lastName: UserAcc.currentuser.lastName, sex: "m", birthdate: Date(), bodyHeight: 7687968, goal: Goal.holdWeight, weight: 45356, weightGoal: "22", caloriesGoal: 22, userId: RealmManager.shared.user!.id)
+                                    
+                    $userAccs.append(userA)
+                }
+               
             }
             
         }

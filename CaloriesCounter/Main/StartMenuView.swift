@@ -8,51 +8,68 @@
 import Foundation
 
 import SwiftUI
+import RealmSwift
 
 struct StartMenuView: View {
-    @State var progress: Double = 0
+    @ObservedRealmObject var currentUser: UserAcc
+    
+    @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
+        
+    var currentuser: UserAcc {
+        userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
+    }
+
+    @State var progress: Double = 0.5
+    @State var date: Date = Date()
+    
+    var daily: Daily {
+        var k = Daily()
+        for d in currentuser.daily {
+            if d.date == date.formatted(.dateTime.year().month().day()) {
+                k = d
+            }
+        }
+        return k
+    }
+    
+    
     var body: some View {
     
         VStack {
-            HeaderView()
+            HeaderView(dateAngezeigt: $date)
                     Spacer()
                     ZStack {
-                        // 2
-                        ProgressCircleView(progress: progress)
+                        
+                        ProgressCircleView(progress: daily.caloriesEaten / 5000)
+                        
                         // 3
-                        Text("\(progress * 100, specifier: "%.0f")")
+                        Text("\(daily.caloriesEaten, specifier: "%.0f")")
                             .font(.largeTitle)
                             .bold()
                     }.frame(width: 200, height: 200)
-                HStack {
-                            // 4
-                            Slider(value: $progress, in: 0...1)
-                            // 5
-                            Button("Reset") {
-                                resetProgress()
-                            }.buttonStyle(.borderedProminent)
-                        }
+            
                     
     
         Spacer()
             HStack{
                 VStack {
                     Text("Kohlenhydrate")
-                    Text("34534")
+                    Text(String(daily.carbohydrates))
                 }
                 .padding()
                 Spacer(minLength: 1)
                 VStack{
                     
                     Text("Protein")
-                    Text("23442")
+                    Text(String(daily.protein))
                     
                 }
                 .padding()
                 Spacer()
                 VStack{
+
                     Text("Fett")
-                    Text("23442")
+                    Text(String(daily.fat))
                     
                 }
                 .padding()
@@ -70,14 +87,19 @@ struct StartMenuView: View {
                 
         }
         .padding()
+        
     }
     func resetProgress() {
         progress = 0
+    }
+    
+    func updater(){
+        progress = daily.caloriesEaten / 5000
     }
 }
 
 struct StartMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        StartMenuView()
+        StartMenuView(currentUser: UserAcc())
     }
 }

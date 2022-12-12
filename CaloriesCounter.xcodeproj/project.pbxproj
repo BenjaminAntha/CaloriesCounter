@@ -28,6 +28,7 @@
 		0A362CDF293956E100166289 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CDE293956E100166289 /* LoginView.swift */; };
 		0A362CE1293DF0C400166289 /* AddDummyUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE0293DF0C400166289 /* AddDummyUserView.swift */; };
 		0A362CE3293E525B00166289 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE2293E525B00166289 /* RegisterView.swift */; };
+		0A362CE5293F4F9700166289 /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE4293F4F9700166289 /* FoodDetailView.swift */; };
 		0A992325292C03A900F68E16 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992323292C03A800F68E16 /* HeaderView.swift */; };
 		0A992326292C03A900F68E16 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992324292C03A900F68E16 /* FooterView.swift */; };
 		0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */; };
@@ -60,6 +61,7 @@
 		0A362CDE293956E100166289 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0A362CE0293DF0C400166289 /* AddDummyUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDummyUserView.swift; sourceTree = "<group>"; };
 		0A362CE2293E525B00166289 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		0A362CE4293F4F9700166289 /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
 		0A992323292C03A800F68E16 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0A992324292C03A900F68E16 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		0AE4D4F9292BD10C00355CFF /* CaloriesCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloriesCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 			children = (
 				003CBBF52930BBBF0037C716 /* ProgressCircle.swift */,
 				003CBC012933AB3E0037C716 /* Datum.swift */,
+				0A362CE4293F4F9700166289 /* FoodDetailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
 				0A362CD22933A87D00166289 /* UserAcc.swift in Sources */,
+				0A362CE5293F4F9700166289 /* FoodDetailView.swift in Sources */,
 				0A362CD82936BD7B00166289 /* AddDummyFoodView.swift in Sources */,
 				0A362CE3293E525B00166289 /* RegisterView.swift in Sources */,
 				003CBBF42930A40B0037C716 /* ProfilView.swift in Sources */,
@@ -438,7 +442,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CaloriesCounter/Preview Content\"";
-				DEVELOPMENT_TEAM = W9883ZAC9F;
+				DEVELOPMENT_TEAM = UWFM5JRC2T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -467,7 +471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CaloriesCounter/Preview Content\"";
-				DEVELOPMENT_TEAM = W9883ZAC9F;
+				DEVELOPMENT_TEAM = UWFM5JRC2T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

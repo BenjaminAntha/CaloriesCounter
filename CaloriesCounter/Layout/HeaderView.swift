@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct HeaderView: View {
-    @State var dateAngezeigt = Datum()
+    @Binding var dateAngezeigt: Date
     
     var body: some View {
         Form{
@@ -22,16 +22,27 @@ struct HeaderView: View {
                 
                 HStack{
                     Button() {
-                        dateAngezeigt.changeDateBack()
+                        var dateComponent = DateComponents()
+                        dateComponent.day = -1
+                        dateAngezeigt = Calendar.current.date(byAdding: dateComponent, to: dateAngezeigt)!
                     }label: {
                         Image(systemName: "arrow.left")
                     }.buttonStyle(.borderedProminent)
                     
-                    Text(dateAngezeigt.dateAngezeigt, format: .dateTime.day().month().year())
-                        .padding()
-                        .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
+                    if dateAngezeigt.formatted(.dateTime.year().month().day()) == Date.now.formatted(.dateTime.year().month().day()){
+                        Text("Heute")
+                            .padding()
+                            .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
+                    }else {
+                        Text(dateAngezeigt, format: .dateTime.day().month().year())
+                            .padding()
+                            .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
+                    }
+                   
                     Button() {
-                        dateAngezeigt.changeDateForward()
+                        var dateComponent = DateComponents()
+                        dateComponent.day = 1
+                        dateAngezeigt = Calendar.current.date(byAdding: dateComponent, to: dateAngezeigt)!
                     }label: {
                         Image(systemName: "arrow.right")
                     }.buttonStyle(.borderedProminent)
@@ -40,12 +51,6 @@ struct HeaderView: View {
             
         }
         .frame(minWidth: 300, maxWidth: 5000, minHeight: 100, maxHeight: 150)
-    }
-}
-
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderView()
     }
 }
 

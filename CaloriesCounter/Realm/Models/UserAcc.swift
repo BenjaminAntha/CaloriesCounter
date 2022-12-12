@@ -33,6 +33,7 @@ class UserAcc: Object, Identifiable {
     
     convenience init(firstName: String, lastName: String, sex: String, birthdate: Date, bodyHeight: Double, goal: Goal, weight: Double, weightGoal: String, caloriesGoal: Double, userId: String) {
         self.init()
+        self.daily.append(Daily())
         self.userId = userId
         self.firstName = firstName
         self.lastName = lastName

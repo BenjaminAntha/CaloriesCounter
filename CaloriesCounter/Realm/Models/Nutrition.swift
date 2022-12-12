@@ -12,4 +12,10 @@ class Nutrition: Object, Identifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var foodProduct: List<FoodProduct> = List<FoodProduct>()
     @Persisted var amount: Double = 0
+    
+    convenience init( foodProduct: List<FoodProduct>, amount: Double) {
+        self.init()
+        self.foodProduct = foodProduct
+        self.amount = amount
+    }
 }

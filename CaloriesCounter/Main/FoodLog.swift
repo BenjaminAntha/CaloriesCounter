@@ -7,44 +7,42 @@
 
 import Foundation
 import SwiftUI
+import RealmSwift
 
 struct FoodLogView: View {
+    @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
+        
+    var currentuser: UserAcc {
+        userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
+    }
     
-    @State var text: String = UserDefaults.standard.string(forKey: "TEXT_KEY") ?? ""
-    @State var inputText: String = ""
+    var list: RealmSwift.List<FoodProduct> = RealmSwift.List<FoodProduct>()
+    
+    @State var date = Date()
+    
+    var daily: Daily {
+        var k = Daily()
+        for d in currentuser.daily {
+            if d.date == date.formatted(.dateTime.year().month().day()){
+                k = d
+            }
+        }
+        return k
+    }
     
     var body: some View {
         VStack{
-            HeaderView()
-            Form{
-                Section(header: Text("input:")){
-                    TextField("Add some text here", text: $inputText)
-                }
-                
-                Section(header: Text("letter count: ")){
-                    let charCount = inputText.filter { $0 != " " }.count
-                    
-                    if (charCount > 30){
-                        Text(String(charCount)).foregroundColor(.red)
-                    } else {
-                        inputText == "" ? Text("Empty") : Text(String(charCount))
+            HeaderView(dateAngezeigt: $date)
+            
+            if daily.nutritions?.foodProduct != nil {
+                List{
+                    ForEach(daily.nutritions?.foodProduct ?? list) { food in
+                        Text(food.Name)
                     }
-                }
-                Section(header: Text("Actions:")) {
-                    Button("Save Data") {
-                        UserDefaults.standard.set(inputText, forKey: "TEXT_KEY")
-                        text = inputText
-                        print("Saved value: \(inputText)")
-                    }
-                }
-                
-                Section(header: Text("Saved Data")){
-                    
-                    Text(text).lineLimit(10)
-                    
-                }
+                }.padding(2)
+            } else {
+                Text("You didn't eat anything today!")
             }
-            .padding()
         }
         
     }

@@ -10,25 +10,19 @@ import SwiftUI
 import RealmSwift
 
 struct ProfilView: View {
-    @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
-    
-    var currentuser: UserAcc? {
-        userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
-    }
-    
+    @ObservedRealmObject var currentUser: UserAcc
+
     @State var isLoggedOut: Bool = false
-    
-    var Markus = Person(name: "Markus", height: 188, weight: 80, age: 45, dailyIntake: 2200)
-    
+        
     var body: some View {
        
         Form{
             Section(header: Text("Profil:")){
-                Text("Vorname: " + currentuser!.firstName)
-                Text("Nachname: " + currentuser!.lastName)
-                Text("Grösse: " + String(currentuser!.bodyHeight) + " cm")
-                Text("Gewicht: " + String(currentuser!.weight) + " kg")
-                Text("Kalorien/Tag: " + String(currentuser!.caloriesGoal) + " kcal")
+                Text("Vorname: " + currentUser.firstName)
+                Text("Nachname: " + currentUser.lastName)
+                Text("Grösse: " + String(currentUser.bodyHeight) + " cm")
+                Text("Gewicht: " + String(currentUser.weight) + " kg")
+                Text("Kalorien/Tag: " + String(currentUser.caloriesGoal) + " kcal")
             }
             Button("Logout", action: logOut)
         }
@@ -36,25 +30,15 @@ struct ProfilView: View {
             RealmManager.shared.logout()
         }
         .padding()
-        .onAppear(perform: adduser)
     }
     
     func logOut() {
         isLoggedOut = true
     }
-    
-    func adduser() {
-        if (currentuser?.weight == 0) {
-            let userA = UserAcc(firstName: UserAcc.currentuser.firstName, lastName: UserAcc.currentuser.lastName, sex: "m", birthdate: Date(), bodyHeight: 22, goal: Goal.holdWeight, weight: 22, weightGoal: "22", caloriesGoal: 22, userId: RealmManager.shared.user!.id)
-            
-            $userAccs.append(userA)
-        }
-        
-    }
 }
 
 struct ProfilView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilView()
+        ProfilView(currentUser: UserAcc())
     }
 }

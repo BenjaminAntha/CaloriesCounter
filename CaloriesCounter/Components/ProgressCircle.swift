@@ -14,6 +14,7 @@ struct ProgressCircleView: View {
     
     let progress: Double
     var body: some View {
+        let _ = print(progress)
         Circle()
                 .stroke( // 1
                     Color.green.opacity(0.5),
