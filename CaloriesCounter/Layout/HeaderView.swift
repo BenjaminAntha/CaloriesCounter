@@ -12,45 +12,60 @@ struct HeaderView: View {
     @Binding var dateAngezeigt: Date
     
     var body: some View {
-        Form{
-            VStack {
-                HStack {
-                    Text("Kalorienzähler").multilineTextAlignment(.center)
-                        .padding()
-                        .frame(maxWidth: 200, maxHeight: 35, alignment: .center)
-                }
-                
-                HStack{
-                    Button() {
-                        var dateComponent = DateComponents()
-                        dateComponent.day = -1
-                        dateAngezeigt = Calendar.current.date(byAdding: dateComponent, to: dateAngezeigt)!
-                    }label: {
-                        Image(systemName: "arrow.left")
-                    }.buttonStyle(.borderedProminent)
-                    
-                    if dateAngezeigt.formatted(.dateTime.year().month().day()) == Date.now.formatted(.dateTime.year().month().day()){
-                        Text("Heute")
+        Color.green.opacity(1.5)
+            .ignoresSafeArea()
+            .overlay(
+                VStack {
+                    HStack {
+                        Text("Kalorienzähler").multilineTextAlignment(.center)
                             .padding()
-                            .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
-                    }else {
-                        Text(dateAngezeigt, format: .dateTime.day().month().year())
-                            .padding()
-                            .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
+                            .frame(maxWidth: 200, maxHeight: 35, alignment: .center)
+                            .fontWeight(.bold)
                     }
-                   
-                    Button() {
-                        var dateComponent = DateComponents()
-                        dateComponent.day = 1
-                        dateAngezeigt = Calendar.current.date(byAdding: dateComponent, to: dateAngezeigt)!
-                    }label: {
-                        Image(systemName: "arrow.right")
-                    }.buttonStyle(.borderedProminent)
+                    
+                    HStack{
+                        Button(action: {changeDateBack()}) {
+                            Image(systemName: "arrow.left")
+                        }.buttonStyle(.borderedProminent)
+                            .foregroundColor(.white)
+                        .tint(.green)
+                        .padding()
+                        
+                        if dateAngezeigt.formatted(.dateTime.year().month().day()) == Date.now.formatted(.dateTime.year().month().day()){
+                            Text("Heute")
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
+                                .fontWeight(.bold)
+                        }else {
+                            Text(dateAngezeigt, format: .dateTime.day().month().year())
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: 35, alignment: .center)
+                                .fontWeight(.bold)
+                        }
+                            
+                        Button(action: {changeDateForward()}) {
+                            Image(systemName: "arrow.right")
+                        }.buttonStyle(.borderedProminent)
+                            .foregroundColor(.white)
+                        .tint(.green)
+                        .padding()
+                    }
                 }
-            }
-            
-        }
-        .frame(minWidth: 300, maxWidth: 5000, minHeight: 100, maxHeight: 150)
+            )      
+        .frame(maxWidth: .infinity, maxHeight: 170)
+    }
+    
+    func changeDateBack(){
+        var dateComponent = DateComponents()
+        dateComponent.day = -1
+        dateAngezeigt = Calendar.current.date(byAdding: dateComponent, to: dateAngezeigt)!
+        
+    }
+    
+    func changeDateForward(){
+        var dateComponent = DateComponents()
+        dateComponent.day = 1
+        dateAngezeigt = Calendar.current.date(byAdding: dateComponent, to: dateAngezeigt)!
     }
 }
 

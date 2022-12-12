@@ -31,20 +31,44 @@ struct FoodLogView: View {
     }
     
     var body: some View {
-        VStack{
-            HeaderView(dateAngezeigt: $date)
-            
-            if daily.nutritions?.foodProduct != nil {
-                List{
-                    ForEach(daily.nutritions?.foodProduct ?? list) { food in
-                        Text(food.Name)
+        NavigationView{
+            VStack{
+                HeaderView(dateAngezeigt: $date)
+                Section{
+                    VStack{
+
+                        List{
+                            Text("This is what you consumed Today")
+                                .padding()
+                                .fontWeight(.bold)
+                            if daily.nutritions?.foodProduct != nil {
+                                List{
+                                    ForEach(daily.nutritions?.foodProduct ?? list) { food in
+                                        Text(food.Name)
+                                    }
+                                }.padding(2)
+                            } else {
+                                Text("You didn't eat anything today!")
+                            }
+                            Section {
+                                
+                                HStack {
+                                    Text("Water")
+                                    Spacer()
+                                    Text("1000")
+                                }
+                            } header: {
+                                HStack {
+                                    Text("Liquid")
+                                    Spacer()
+                                    Text("ml")
+                                }
+                            } 
+                        }
                     }
-                }.padding(2)
-            } else {
-                Text("You didn't eat anything today!")
+                }
             }
         }
-        
     }
 }
 

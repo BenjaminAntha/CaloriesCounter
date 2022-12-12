@@ -15,34 +15,31 @@ struct AddFoodView: View {
     @ObservedResults(FoodProduct.self) var foodProducts: Results<FoodProduct>
     
     @State var showEditAddFood = false
-        var body: some View {
-            NavigationView {
-                VStack {
-                    
-                    Button("edit", action: {
+    var body: some View {
+        NavigationView {
+            VStack {
+                Section{
+                    Button("add Food", action: {
                         showEditAddFood.toggle()
                     })
-                    NavigationLink("", destination: AddDummyFoodView(), isActive: $showEditAddFood)
+                    .buttonStyle(.borderedProminent)
+                    .foregroundColor(.white)
+                    .tint(.green)
+                    NavigationLink("", destination: AddDummyFoodView()
+                        , isActive: $showEditAddFood)
                     Text("")
                         .searchable(text: $searchText)
                         .navigationTitle("Add your Food")
                     
-                    /*
                     List(foodProducts, id: \._id) { foodProduct in
+                        NavigationLink(destination: FoodDetailView(currentUser: currentUser ,foodProduct: foodProduct)) {
                             Text(foodProduct.Name)
-                    }
-                    */
-                    
-                    List{
-                        ForEach(foodProducts) { foodProduct in
-                            NavigationLink(destination: FoodDetailView(currentUser: currentUser ,foodProduct: foodProduct)) {
-                                Text(foodProduct.Name)
-                            }
                         }
-                    }.navigationBarTitle("Back")
+                    }
                 }
             }
         }
+    }
 }
 
 struct addFoodView_Previews: PreviewProvider {

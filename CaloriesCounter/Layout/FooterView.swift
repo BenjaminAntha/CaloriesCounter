@@ -10,6 +10,8 @@ import SwiftUI
 import RealmSwift
 
 struct FooterView: View {
+    
+    let footerColor = UIColor.white
     @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
     @Environment(\.realm) var realm
     
@@ -18,35 +20,52 @@ struct FooterView: View {
     }
         var body: some View {
             TabView {
+                VStack {
+                    StartMenuView(currentUser: currentuser ?? UserAcc())
+                }
+                .tabItem {
+                    Label("Kalender", systemImage: "calendar")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-                StartMenuView(currentUser: currentuser ?? UserAcc())
-                    .tabItem {
-                        Label("Kalender", systemImage: "calendar")
-                    }
-                StatsView()
-                    .tabItem {
-                        Label("Statistik", systemImage: "chart.bar.xaxis")
-                    }
-                
-                
-                AddFoodView(currentUser: currentuser ?? UserAcc())
-                    .tabItem {
-                        Label("Add", systemImage: "plus")
-                    }
-                
-                FoodLogView()
+                VStack {
+                    StatsView()
+                }
+                .tabItem {
+                    Label("Statistik", systemImage: "chart.bar.xaxis")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+               
+                VStack{
+                    AddFoodView(currentUser: currentuser ?? UserAcc())
+                }
+                .tabItem {
+                    Label("Add", systemImage: "plus")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundColor(Color("lightGrayRB"))
+                    
+                VStack{
+                    FoodLogView()
+                }
                     .tabItem {
                         Label("Essen", systemImage: "fork.knife")
                     }
-                
-                ProfilView(currentUser: currentuser ?? UserAcc())
-                    .tabItem {
-                        Label("Profil", systemImage: "person")
-                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                VStack{
+                    ProfilView(currentUser: currentuser ?? UserAcc())
+                }
+                .tabItem {
+                    Label("Profil", systemImage: "person")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
             }.task{
                 await adduser()
-                print("added user")
-            }
+            }   
+            .edgesIgnoringSafeArea(.top)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     
         func adduser() async{

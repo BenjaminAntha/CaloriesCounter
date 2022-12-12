@@ -15,21 +15,23 @@ struct ProfilView: View {
     @State var isLoggedOut: Bool = false
         
     var body: some View {
-       
-        Form{
-            Section(header: Text("Profil:")){
-                Text("Vorname: " + currentUser.firstName)
-                Text("Nachname: " + currentUser.lastName)
-                Text("Grösse: " + String(currentUser.bodyHeight) + " cm")
-                Text("Gewicht: " + String(currentUser.weight) + " kg")
-                Text("Kalorien/Tag: " + String(currentUser.caloriesGoal) + " kcal")
+        NavigationView{
+            Form{
+                Section(header: Text("Profil:")){
+                    Text("Vorname: " + currentUser!.firstName)
+                    Text("Nachname: " + currentUser!.lastName)
+                    Text("Grösse: " + String(currentUser!.bodyHeight) + " cm")
+                    Text("Gewicht: " + String(currentUser!.weight) + " kg")
+                    Text("Kalorien/Tag: " + String(currentUser!.caloriesGoal) + " kcal")
+                }
+                Button("Logout", action: logOut)
             }
-            Button("Logout", action: logOut)
+            .onChange(of: isLoggedOut) { isLoggedOut in
+                RealmManager.shared.logout()
+            }
+            
+            .onAppear(perform: adduser)
         }
-        .onChange(of: isLoggedOut) { isLoggedOut in
-            RealmManager.shared.logout()
-        }
-        .padding()
     }
     
     func logOut() {

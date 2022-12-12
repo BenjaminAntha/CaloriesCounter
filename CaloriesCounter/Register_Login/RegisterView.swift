@@ -20,22 +20,35 @@ struct RegisterView: View {
     var body: some View {
         NavigationView{
             VStack{
-                TextField("Firstname: ", text: $firstName)
-                TextField("Lastname: ", text: $lastName)
-                TextField("Email: ", text: $email)
-                SecureField("Password: ", text: $pw)
+                Text("Register")
+                    .font(Font.title.bold())
+                    .foregroundColor(.gray)
+                Section{
+                    TextField("Firstname: ", text: $firstName)
+                    TextField("Lastname: ", text: $lastName)
+                    TextField("Email: ", text: $email)
+                    SecureField("Password: ", text: $pw)
+                }
+                .textFieldStyle(.roundedBorder)
+                .foregroundColor(.gray)
+                
                 
                 Button("Create Account") {
                     Task {
                         await addUser()
                     }
                 }
+                
                 .frame(width: 150, height: 50)
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .clipShape(Capsule())
+                .padding()
+                
                 
             }
+            .padding(50)
+            .foregroundColor(.green)
         }
       
     }
