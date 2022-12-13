@@ -29,6 +29,7 @@
 		0A362CE1293DF0C400166289 /* AddDummyUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE0293DF0C400166289 /* AddDummyUserView.swift */; };
 		0A362CE3293E525B00166289 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE2293E525B00166289 /* RegisterView.swift */; };
 		0A362CE5293F4F9700166289 /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE4293F4F9700166289 /* FoodDetailView.swift */; };
+		0A362CE82948A1D300166289 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 0A362CE72948A1D300166289 /* WrappingHStack */; };
 		0A992325292C03A900F68E16 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992323292C03A800F68E16 /* HeaderView.swift */; };
 		0A992326292C03A900F68E16 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A992324292C03A900F68E16 /* FooterView.swift */; };
 		0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D4FC292BD10C00355CFF /* CaloriesCounterApp.swift */; };
@@ -77,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AE4D50E292BD1BC00355CFF /* RealmSwift in Frameworks */,
+				0A362CE82948A1D300166289 /* WrappingHStack in Frameworks */,
 				0AE4D50C292BD1BC00355CFF /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +228,7 @@
 			packageProductDependencies = (
 				0AE4D50B292BD1BC00355CFF /* Realm */,
 				0AE4D50D292BD1BC00355CFF /* RealmSwift */,
+				0A362CE72948A1D300166289 /* WrappingHStack */,
 			);
 			productName = CaloriesCounter;
 			productReference = 0AE4D4F9292BD10C00355CFF /* CaloriesCounter.app */;
@@ -257,6 +260,7 @@
 			mainGroup = 0AE4D4F0292BD10C00355CFF;
 			packageReferences = (
 				0AE4D50A292BD1BC00355CFF /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0A362CE62948A1D300166289 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = 0AE4D4FA292BD10C00355CFF /* Products */;
 			projectDirPath = "";
@@ -516,6 +520,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0A362CE62948A1D300166289 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		0AE4D50A292BD1BC00355CFF /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -527,6 +539,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A362CE72948A1D300166289 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A362CE62948A1D300166289 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
 		0AE4D50B292BD1BC00355CFF /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0AE4D50A292BD1BC00355CFF /* XCRemoteSwiftPackageReference "realm-swift" */;

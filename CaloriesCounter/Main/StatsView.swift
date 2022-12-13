@@ -20,8 +20,14 @@ struct StatsView: View {
     
     var daily: Daily {
         var k = Daily()
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en")
+        formatter.dateFormat =  "d. MMM. y"
+        let dateEdited = formatter.string(from: date)
+        print(dateEdited)
         for d in currentuser.daily {
-            if d.date == date.formatted(.dateTime.year().month().day()){
+            if  d.userId == currentuser.userId && d.date == dateEdited{
+                print(true)
                 k = d
             }
         }
@@ -55,7 +61,6 @@ struct StatsView: View {
                 }
             }
             .padding()
-           
         }.onAppear(perform: getWeek)
     }
     
@@ -67,10 +72,12 @@ struct StatsView: View {
         
         // Set Date Format
         dateFormatter.dateFormat = "d. MMM. y"
-        
+        dateFormatter.locale = Locale(identifier: "en")
+
         if daily.date == "" {
             d = date
         }else{
+            print(daily.date)
             d = dateFormatter.date(from: daily.date)!
         }
         
@@ -102,6 +109,10 @@ struct StatsView: View {
         datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
         let bbbbbyesterday = getDaily(datePlaceholder: datePlaceholder)
         
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en")
+        formatter.dateFormat =  "d. MMM. y"
+        let dateEdited = formatter.string(from: date)
         
         if daily.date == "" {
             currentWeek = [
@@ -111,7 +122,7 @@ struct StatsView: View {
                         CaloriesPerDay(day: bbyesterday.date, calories: bbyesterday.caloriesEaten),
                         CaloriesPerDay(day: byesterday.date, calories: byesterday.caloriesEaten),
                         CaloriesPerDay(day: yesterday.date, calories: yesterday.caloriesEaten),
-                        CaloriesPerDay(day: date.formatted(.dateTime.year().month().day()), calories: daily.caloriesEaten)
+                        CaloriesPerDay(day: dateEdited, calories: daily.caloriesEaten)
                     ]
         }else{
             currentWeek = [
@@ -127,13 +138,17 @@ struct StatsView: View {
     }
     
     func getDaily(datePlaceholder: Date) -> Daily{
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en")
+        formatter.dateFormat =  "d. MMM. y"
+        let dateEdited = formatter.string(from: datePlaceholder)
         for b in currentuser.daily {
-            if b.date == datePlaceholder.formatted(.dateTime.year().month().day()){
+            if b.date == dateEdited{
                 return b
             }
         }
         let defaultDaily = Daily()
-        defaultDaily.date = datePlaceholder.formatted(.dateTime.year().month().day())
+        defaultDaily.date = dateEdited
         return defaultDaily
     }
 }
@@ -152,7 +167,8 @@ struct CaloriesPerDay: Identifiable {
     init(day: String, calories: Double) {
         let formatter = DateFormatter()
         formatter.dateFormat = "d. MMM. y"
-        
+        formatter.locale = Locale(identifier: "en")
+
         self.day = formatter.date(from: day) ?? Date.distantPast
         self.calories = calories
     }

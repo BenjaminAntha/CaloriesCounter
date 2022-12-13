@@ -16,21 +16,19 @@ struct ProfilView: View {
         
     var body: some View {
         NavigationView{
-            Form{
+            Form {
                 Section(header: Text("Profil:")){
-                    Text("Vorname: " + currentUser!.firstName)
-                    Text("Nachname: " + currentUser!.lastName)
-                    Text("Grösse: " + String(currentUser!.bodyHeight) + " cm")
-                    Text("Gewicht: " + String(currentUser!.weight) + " kg")
-                    Text("Kalorien/Tag: " + String(currentUser!.caloriesGoal) + " kcal")
+                    Text("Vorname: " + currentUser.firstName)
+                    Text("Nachname: " + currentUser.lastName)
+                    Text("Grösse: " + String(currentUser.bodyHeight) + " cm")
+                    Text("Gewicht: " + String(currentUser.weight) + " kg")
+                    Text("Kalorien/Tag: " + String(currentUser.caloriesGoal) + " kcal")
                 }
                 Button("Logout", action: logOut)
             }
             .onChange(of: isLoggedOut) { isLoggedOut in
                 RealmManager.shared.logout()
             }
-            
-            .onAppear(perform: adduser)
         }
     }
     

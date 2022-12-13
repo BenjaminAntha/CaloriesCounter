@@ -67,9 +67,8 @@ struct FooterView: View {
             .edgesIgnoringSafeArea(.top)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-    
         func adduser() async{
-            if (currentuser?.weight == 0) {
+            if (currentuser?.weight == 0 && UserAcc.currentuser.firstName != "not set") {
                 try? realm.write{
                     let userA = UserAcc(firstName: UserAcc.currentuser.firstName, lastName: UserAcc.currentuser.lastName, sex: "m", birthdate: Date(), bodyHeight: 7687968, goal: Goal.holdWeight, weight: 45356, weightGoal: "22", caloriesGoal: 22, userId: RealmManager.shared.user!.id)
                                     

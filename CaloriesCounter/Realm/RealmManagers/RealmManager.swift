@@ -41,6 +41,7 @@ class RealmManager: ObservableObject {
         user = try await app.login(credentials: Credentials.emailPassword(email: emailUser, password: passwordUser))
     }
     
+    @MainActor
     func logout(){
         app.currentUser?.logOut { (error) in
             // user is logged out or there was an error
@@ -50,6 +51,7 @@ class RealmManager: ObservableObject {
 
     @MainActor // function is exceuted on the Main thread
     func initializeCurrentUser() async throws {
+        
         if user != nil {
             self.configuration = user?.flexibleSyncConfiguration(initialSubscriptions: { subs in
                 if let _  = subs.first(named: "all-products"), let _ = subs.first(named: "all-users"), let _ = subs.first(named: "all-dailys"), let _ = subs.first(named: "all-nutrtions") {

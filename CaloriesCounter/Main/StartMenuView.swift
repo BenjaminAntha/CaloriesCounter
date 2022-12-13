@@ -9,6 +9,7 @@ import Foundation
 
 import SwiftUI
 import RealmSwift
+import WrappingHStack
 
 struct StartMenuView: View {
     @ObservedRealmObject var currentUser: UserAcc
@@ -19,71 +20,189 @@ struct StartMenuView: View {
         userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
     }
 
+    @Environment(\.realm) var realm
+
+    
     @State var progress: Double = 0.5
     @State var date: Date = Date()
+    @State private var caloriesBurned: Double = 0
+
     
     var daily: Daily {
         var k = Daily()
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en")
+        formatter.dateFormat =  "d. MMM. y"
+        let dateEdited = formatter.string(from: date)
+        print(dateEdited)
         for d in currentuser.daily {
-            if d.date == date.formatted(.dateTime.year().month().day()) {
+            if  d.userId == currentuser.userId && d.date == dateEdited{
+                print(true)
                 k = d
+               
             }
         }
         return k
-    }                
+    }
     
     var body: some View {
-        Color.green.opacity(0.2)
-            .ignoresSafeArea()
-            .overlay(           
-                VStack {
-                HeaderView(dateAngezeigt: $date)
-                    .frame(maxWidth: .infinity, maxHeight: 170)
-                    .offset(x: 0, y: -128)
-                        ZStack {
-                            // 2
-                            ProgressCircleView(progress: daily.caloriesEaten / 5000)
-                            // 3
-                            Text("\(daily.caloriesEaten, specifier: "%.0f")")
-                                .font(.largeTitle)
-                                .bold()
-                        }
-                        .frame(width: 200, height: 200)
-                        .padding()
-                HStack{
-                    VStack {
-                        Text("Kohlenhydrate")
-                        Text(String(daily.carbohydrates))
-                    }
-                    .padding()
-                    Spacer(minLength: 1)
-                    VStack{
-                        
-                        Text("Protein")
-                        Text(String(daily.protein))
-                        
-                    }
-                    .padding()
-                    Spacer()
-                    VStack{
-                        Text("Fett")
-                        Text(String(daily.fat))
-                        
-                    }
-                    .padding()
-                }
-                .fontWeight(.light)
-                .font(.system(size: 15))
-                .fixedSize(horizontal: false, vertical: true)
-                .multilineTextAlignment(.center)
-                .padding(0)
-                .frame(width: 300, height: 75)
-                .background(Rectangle().fill(Color.white).shadow(radius: 3))
-                .offset(x:0,y: 50)
-                .multilineTextAlignment(.center)
-            })
         
-        .frame(maxWidth: .infinity, maxHeight: 750)
+            Color.green.opacity(0.2)
+                .ignoresSafeArea()
+                .overlay(
+                VStack {
+
+                    HeaderView(dateAngezeigt: $date)
+                    
+                    ScrollView{
+                        VStack {
+                            ZStack {
+                                // 2
+                                ProgressCircleView(progress: daily.caloriesEaten / 5000)
+                                // 3
+                                VStack{
+                                    Text("\(daily.caloriesEaten, specifier: "%.1f")")
+                                        .font(.largeTitle)
+                                        .bold()
+                                    Text("Gegessen")
+                                }
+                                
+                            }
+                            .frame(width: 200, height: 200)
+                            .padding(.top, 30)
+                            
+                            HStack{
+                                VStack{
+                                    Text("\(5000 - daily.caloriesEaten + daily.caloriesBurned, specifier: "%.1f")")
+                                    Text("Übrig")
+                                }
+                                Spacer()
+                                VStack{
+                                    Text("\(daily.caloriesBurned, specifier: "%.1f")")
+                                    Text("Verbrannt")
+                                }
+                                
+                            }
+                            .padding(.bottom, 20)
+                            .padding(25)
+                                
+                            
+                            
+                            HStack{
+                                VStack {
+                                    Text("Kohlenhydrate")
+                                    Text("\(daily.carbohydrates, specifier: "%.1f")")
+                                }
+                                .padding()
+                                
+                                VStack{
+                                    
+                                    Text("Protein")
+                                    Text("\(daily.protein, specifier: "%.1f")")
+                                    
+                                }
+                                .padding()
+                                Spacer()
+                                VStack{
+                                    Text("Fett")
+                                    Text("\(daily.fat, specifier: "%.1f")")
+                                    
+                                }
+                                .padding(.trailing,40)
+                                
+                            }
+                           
+                            .font(.system(size: 15))
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.center)
+                            .padding(0)
+                            .frame(width: 350, height: 75)
+                            .background(Rectangle().fill(Color.green.opacity(0.3)).shadow(radius: 3).cornerRadius(15))
+                            .multilineTextAlignment(.center)
+                            
+                            Spacer(minLength: 20)
+                            //Wasser
+                            VStack{
+                                HStack{
+                                    Text("Wasserzähler")
+                                    Image(systemName: "drop.fill")
+                                        .foregroundColor(.blue)
+                                   
+                                }
+                                VStack{
+                                    Text("Füge 250ml Wasser hinzu:")
+                                        .padding(.top, 10)
+                                    Button {
+                                        let dailyCopied = daily.thaw()!
+                                        try! realm.write{
+                                            dailyCopied.waterCounter += 1
+                                        }
+                                    } label: {
+                                        Image(systemName: "plus.circle")
+                                            .font(.system(size: 30))
+                                    }
+                                    .padding(.top, 10)
+                                    
+                                        
+                                }
+                                WrappingHStack(1..<Int(daily.waterCounter + 1), id:\.self) { i in
+                                    Image(systemName: "cup.and.saucer.fill")
+                                        .font(.system(size: 30))
+                                        .padding(.top, 10)
+                                }.padding(.leading, 20)
+                            }
+                            .padding(.top, 10)
+                            .padding(.bottom, 30)
+                            .frame(width: 350)
+                            .background(Rectangle().fill(Color.green.opacity(0.3)).shadow(radius: 3).cornerRadius(15))
+                            
+                            Spacer(minLength: 20)
+                            
+                            //Verbrenner
+                            VStack{
+                                HStack{
+                                    Text("Verbrenner")
+                                    Image(systemName: "flame.fill")
+                                        .foregroundColor(.red)
+                                   
+                                }
+                                VStack{
+                                    Text("Wie viele kcal hast du verbrennt?")
+                                        .padding(.top, 10)
+                                    HStack{
+                                        Text("\(caloriesBurned, specifier: "%.1f")")
+                                            .padding()
+                                            .font(.system(size: 20))
+                                        Button {
+                                            let dailyCopied = daily.thaw()!
+                                            try! realm.write{
+                                                dailyCopied.caloriesBurned = caloriesBurned
+                                            }
+                                        } label: {
+                                            Image(systemName: "plus.circle")
+                                                .font(.system(size: 30))
+                                        }
+                                    }
+                                    
+                                    Slider(value: $caloriesBurned, in: 0...1000)
+                                        .padding()
+                                        
+                                    
+                                }
+                                
+                                
+                            }
+                            .padding(.top, 10)
+                            .padding(.bottom, 30)
+                            .frame(width: 350)
+                            .background(Rectangle().fill(Color.green.opacity(0.3)).shadow(radius: 3).cornerRadius(15))
+                        }
+                    }
+                })
+            
+                .frame(maxWidth: .infinity, maxHeight: 750)
+            
+        
     }
     
     func resetProgress() {

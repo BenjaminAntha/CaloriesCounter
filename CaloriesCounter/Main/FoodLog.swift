@@ -15,20 +15,28 @@ struct FoodLogView: View {
     var currentuser: UserAcc {
         userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
     }
-    
+    @ObservedResults(Daily.self) var dailys: Results<Daily>
+
     var list: RealmSwift.List<FoodProduct> = RealmSwift.List<FoodProduct>()
     
     @State var date = Date()
     
     var daily: Daily {
         var k = Daily()
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en")
+        formatter.dateFormat =  "d. MMM. y"
+        let dateEdited = formatter.string(from: date)
+        print(dateEdited)
         for d in currentuser.daily {
-            if d.date == date.formatted(.dateTime.year().month().day()){
+            if  d.userId == currentuser.userId && d.date == dateEdited{
+                print(true)
                 k = d
             }
         }
         return k
     }
+    
     
     var body: some View {
         NavigationView{
@@ -36,26 +44,29 @@ struct FoodLogView: View {
                 HeaderView(dateAngezeigt: $date)
                 Section{
                     VStack{
-
                         List{
                             Text("This is what you consumed Today")
                                 .padding()
                                 .fontWeight(.bold)
-                            if daily.nutritions?.foodProduct != nil {
-                                List{
+                            Section {
+                                if daily.nutritions?.foodProduct != nil {
                                     ForEach(daily.nutritions?.foodProduct ?? list) { food in
                                         Text(food.Name)
                                     }
-                                }.padding(2)
-                            } else {
-                                Text("You didn't eat anything today!")
+                                }
+                            } header: {
+                                HStack {
+                                    Text("Food")
+                                    Spacer()
+                                    Text("Kcal")
+                                }
                             }
+                            
                             Section {
-                                
                                 HStack {
                                     Text("Water")
                                     Spacer()
-                                    Text("1000")
+                                    Text(String(daily.waterCounter * 250))
                                 }
                             } header: {
                                 HStack {
@@ -63,7 +74,21 @@ struct FoodLogView: View {
                                     Spacer()
                                     Text("ml")
                                 }
-                            } 
+                            }
+                            
+                            Section {
+                                HStack {
+                                    Text("Verbrenner")
+                                    Spacer()
+                                    Text("\(daily.caloriesBurned, specifier: "%.1f")")
+                                }
+                            } header: {
+                                HStack {
+                                    Text("Verbrannt")
+                                    Spacer()
+                                    Text("Kcal")
+                                }
+                            }
                         }
                     }
                 }
