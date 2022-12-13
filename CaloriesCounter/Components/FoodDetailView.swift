@@ -130,8 +130,8 @@ struct FoodDetailView: View {
                 thawedDaily.nutritions?.foodProduct.append(thawedFood)
                 thawedDaily.nutritions?.amount = amount
                 thawedDaily.caloriesEaten += calories
-                thawedDaily.carbohydrates += Double(thawedFood.Kohlenhydrate_verfügbar)!
-                thawedDaily.fat += Double(thawedFood.Fett)!
+                thawedDaily.carbohydrates += Double(thawedFood.Kohlenhydrate_verfügbar) ?? 0
+                thawedDaily.fat += Double(thawedFood.Fett) ?? 0
                 thawedDaily.protein += thawedFood.Protein
             }
         } else {
@@ -140,8 +140,8 @@ struct FoodDetailView: View {
                 daily.nutritions?.amount = amount
                 daily.date = formatter.string(from: date)
                 daily.caloriesEaten += calories
-                daily.carbohydrates += Double(thawedFood.Kohlenhydrate_verfügbar)!
-                daily.fat += Double(thawedFood.Fett)!
+                daily.carbohydrates += Double(thawedFood.Kohlenhydrate_verfügbar) ?? 0
+                daily.fat += Double(thawedFood.Fett) ?? 0
                 daily.userId = currentUser.userId
                 $currentUser.daily.append(daily)
             }

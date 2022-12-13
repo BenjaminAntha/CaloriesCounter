@@ -15,6 +15,8 @@ struct AddFoodView: View {
     @ObservedResults(FoodProduct.self) var foodProducts: Results<FoodProduct>
     
     @State var showEditAddFood = false
+    @State private var searchFilter = ""
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -27,18 +29,18 @@ struct AddFoodView: View {
                     .tint(.green)
                     NavigationLink("", destination: AddDummyFoodView()
                         , isActive: $showEditAddFood)
-                    Text("")
-                        .searchable(text: $searchText)
-                        .navigationTitle("Add your Food")
+    
                     
                     List(foodProducts, id: \._id) { foodProduct in
                         NavigationLink(destination: FoodDetailView(currentUser: currentUser ,foodProduct: foodProduct)) {
                             Text(foodProduct.Name)
                         }
-                    }
+                    }.searchable(text: $searchFilter,
+                                 collection: $foodProducts,
+                                 keyPath: \.Name)
                 }
             }
-        }
+        }.navigationTitle("Add your Food")
     }
 }
 
