@@ -13,7 +13,11 @@ struct AddFoodView: View {
     @State private var searchText = ""
     @ObservedRealmObject var currentUser: UserAcc
     @ObservedResults(FoodProduct.self) var foodProducts: Results<FoodProduct>
-    
+    @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
+    @Environment(\.realm) var realm
+    var currentuser: UserAcc? {
+        userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
+    }
     @State var showEditAddFood = false
     @State private var searchFilter = ""
     
@@ -38,9 +42,24 @@ struct AddFoodView: View {
                     }.searchable(text: $searchFilter,
                                  collection: $foodProducts,
                                  keyPath: \.Name)
+                }.task {
+                    await refreshUser()
                 }
             }
         }.navigationTitle("Add your Food")
+    }
+    
+    func refreshUser() async{
+        if (currentuser?.userId == "" && RealmManager.shared.user != nil) {
+            try? realm.write{
+                
+                let user = UserAcc.currentuser
+                let userA = UserAcc(firstName: user.firstName, lastName: user.lastName, sex: user.sex, birthdate: user.birthdate, bodyHeight: user.bodyHeight, goal: user.goal, weight: user.weight, weightGoal: 420, caloriesGoal: user.caloriesGoal, userId: RealmManager.shared.user!.id)
+                
+                $userAccs.append(userA)
+                realm.refresh()
+            }
+        }
     }
 }
 

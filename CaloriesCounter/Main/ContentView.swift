@@ -9,11 +9,15 @@ import SwiftUI
 import RealmSwift
 
 struct ContentView: View {
+
+    
+    
     var body: some View {
+        
         FooterView()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .foregroundColor(Color("lightGrayRB"))
-   
+
     }
 }
     

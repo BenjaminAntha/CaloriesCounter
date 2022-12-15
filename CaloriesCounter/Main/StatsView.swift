@@ -24,10 +24,8 @@ struct StatsView: View {
         formatter.locale = Locale(identifier: "en")
         formatter.dateFormat =  "d. MMM. y"
         let dateEdited = formatter.string(from: date)
-        print(dateEdited)
         for d in currentuser.daily {
             if  d.userId == currentuser.userId && d.date == dateEdited{
-                print(true)
                 k = d
             }
         }
@@ -50,7 +48,7 @@ struct StatsView: View {
                             y: .value("Step Count", $0.calories)
                         )
                     }
-                    RuleMark(y: .value("Goal", 2000))
+                    RuleMark(y: .value("Goal", currentuser.caloriesGoal))
                         .foregroundStyle(.orange)
                         .lineStyle(StrokeStyle(lineWidth: 1, dash: [5]))
                         .annotation(alignment: .leading){
@@ -77,7 +75,6 @@ struct StatsView: View {
         if daily.date == "" {
             d = date
         }else{
-            print(daily.date)
             d = dateFormatter.date(from: daily.date)!
         }
         
@@ -85,12 +82,10 @@ struct StatsView: View {
         dateComponent.day = -1
         var datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
         let yesterday = getDaily(datePlaceholder: datePlaceholder)
-        print(yesterday.caloriesEaten)
         
         dateComponent.day = -2
         datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!
         let byesterday = getDaily(datePlaceholder: datePlaceholder)
-        print(byesterday.caloriesEaten)
         
         dateComponent.day = -3
         datePlaceholder = Calendar.current.date(byAdding: dateComponent, to: d)!

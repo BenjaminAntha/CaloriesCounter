@@ -22,6 +22,8 @@ struct FooterView: View {
             TabView {
                 VStack {
                     StartMenuView(currentUser: currentuser ?? UserAcc())
+                }.task {
+                    await adduser()
                 }
                 .tabItem {
                     Label("Kalender", systemImage: "calendar")
@@ -38,6 +40,8 @@ struct FooterView: View {
                
                 VStack{
                     AddFoodView(currentUser: currentuser ?? UserAcc())
+                }.task {
+                    await adduser()
                 }
                 .tabItem {
                     Label("Add", systemImage: "plus")
@@ -56,6 +60,9 @@ struct FooterView: View {
                 VStack{
                     ProfilView(currentUser: currentuser ?? UserAcc())
                 }
+                .task {
+                    await adduser()
+                }
                 .tabItem {
                     Label("Profil", systemImage: "person")
                 }
@@ -68,13 +75,16 @@ struct FooterView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         func adduser() async{
-            if (currentuser?.weight == 0 && UserAcc.currentuser.firstName != "not set") {
+            if (currentuser?.userId == "" && RealmManager.shared.user != nil) {
                 try? realm.write{
-                    let userA = UserAcc(firstName: UserAcc.currentuser.firstName, lastName: UserAcc.currentuser.lastName, sex: "m", birthdate: Date(), bodyHeight: 7687968, goal: Goal.holdWeight, weight: 45356, weightGoal: "22", caloriesGoal: 22, userId: RealmManager.shared.user!.id)
-                                    
+                    
+                    let user = UserAcc.currentuser
+                    let userA = UserAcc(firstName: user.firstName, lastName: user.lastName, sex: user.sex, birthdate: user.birthdate, bodyHeight: user.bodyHeight, goal: user.goal, weight: user.weight, weightGoal: 420, caloriesGoal: user.caloriesGoal, userId: RealmManager.shared.user!.id)
+                    
                     $userAccs.append(userA)
+                    realm.refresh()
+                    
                 }
-               
             }
             
         }

@@ -29,6 +29,7 @@ class RealmManager: ObservableObject {
             try await client.registerUser(email: emailUser, password: passwordUser)
             // Registering just registers. You can now log in.
             print("Successfully registered user.")
+            // set relation with custom data and user
             try await login(emailUser: emailUser, passwordUser: passwordUser)
            
         } catch {
@@ -39,6 +40,7 @@ class RealmManager: ObservableObject {
     @MainActor
     func login(emailUser: String, passwordUser: String) async throws{
         user = try await app.login(credentials: Credentials.emailPassword(email: emailUser, password: passwordUser))
+        
     }
     
     @MainActor
@@ -67,6 +69,7 @@ class RealmManager: ObservableObject {
             realm = try! await Realm(configuration: configuration!, downloadBeforeOpen: .always)
         } else {
             let _ = print("You have to log in")
+            
         }
     }
     

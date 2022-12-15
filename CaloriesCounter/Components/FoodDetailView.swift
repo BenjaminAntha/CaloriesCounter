@@ -95,12 +95,12 @@ struct FoodDetailView: View {
         Spacer()
         
         Button("Essen hinzufügen") {
-            print(currentUser.firstName)
             Task{
                 await addDaily()
             }
         }
         .padding()
+        .foregroundColor(.white)
         .background(.green)
         .clipShape(Capsule())
         Spacer()
@@ -136,6 +136,7 @@ struct FoodDetailView: View {
             }
         } else {
             try! realm.write{
+                let usser = currentuser.thaw()!
                 daily.nutritions?.foodProduct.append(thawedFood)
                 daily.nutritions?.amount = amount
                 daily.date = formatter.string(from: date)
@@ -143,7 +144,7 @@ struct FoodDetailView: View {
                 daily.carbohydrates += Double(thawedFood.Kohlenhydrate_verfügbar) ?? 0
                 daily.fat += Double(thawedFood.Fett) ?? 0
                 daily.userId = currentUser.userId
-                $currentUser.daily.append(daily)
+                usser.daily.append(daily)
             }
         }
     }

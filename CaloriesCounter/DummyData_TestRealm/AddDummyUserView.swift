@@ -40,7 +40,7 @@ struct AddDummyUserView: View {
     }
     
     func addUser(){
-        let userA = UserAcc(firstName:RealmManager.shared.user!.id, lastName: "Mustermann", sex: "m", birthdate: Date(), bodyHeight: 22, goal: Goal.holdWeight, weight: 22, weightGoal: "22", caloriesGoal: 22, userId: RealmManager.shared.user!.id)
+        let userA = UserAcc(firstName:RealmManager.shared.user!.id, lastName: "Mustermann", sex: "m", birthdate: Date(), bodyHeight: 22, goal: Goal.holdWeight, weight: 22, weightGoal: 22, caloriesGoal: 22, userId: RealmManager.shared.user!.id)
         
         $userAcc.append(userA)
         print($userAcc)

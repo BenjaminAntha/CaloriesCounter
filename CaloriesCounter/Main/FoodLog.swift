@@ -27,10 +27,8 @@ struct FoodLogView: View {
         formatter.locale = Locale(identifier: "en")
         formatter.dateFormat =  "d. MMM. y"
         let dateEdited = formatter.string(from: date)
-        print(dateEdited)
         for d in currentuser.daily {
             if  d.userId == currentuser.userId && d.date == dateEdited{
-                print(true)
                 k = d
             }
         }

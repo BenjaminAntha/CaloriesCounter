@@ -19,13 +19,13 @@ struct StartMenuView: View {
     var currentuser: UserAcc {
         userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
     }
-
+    
     @Environment(\.realm) var realm
 
     
-    @State var progress: Double = 0.5
+    @State var progress: Double = 0
     @State var date: Date = Date()
-    @State private var caloriesBurned: Double = 0
+    @State private var caloriesBurned: Double = 0.5
 
     
     var daily: Daily {
@@ -34,10 +34,8 @@ struct StartMenuView: View {
         formatter.locale = Locale(identifier: "en")
         formatter.dateFormat =  "d. MMM. y"
         let dateEdited = formatter.string(from: date)
-        print(dateEdited)
         for d in currentuser.daily {
             if  d.userId == currentuser.userId && d.date == dateEdited{
-                print(true)
                 k = d
                
             }
@@ -58,7 +56,7 @@ struct StartMenuView: View {
                         VStack {
                             ZStack {
                                 // 2
-                                ProgressCircleView(progress: daily.caloriesEaten / 5000)
+                                ProgressCircleView(progress: daily.caloriesEaten / currentuser.caloriesGoal)
                                 // 3
                                 VStack{
                                     Text("\(daily.caloriesEaten, specifier: "%.1f")")
@@ -73,7 +71,7 @@ struct StartMenuView: View {
                             
                             HStack{
                                 VStack{
-                                    Text("\(5000 - daily.caloriesEaten + daily.caloriesBurned, specifier: "%.1f")")
+                                    Text("\(currentuser.caloriesGoal - daily.caloriesEaten + daily.caloriesBurned, specifier: "%.1f")")
                                     Text("Übrig")
                                 }
                                 Spacer()
@@ -198,8 +196,14 @@ struct StartMenuView: View {
                             .background(Rectangle().fill(Color.green.opacity(0.3)).shadow(radius: 3).cornerRadius(15))
                         }
                     }
+                }).onAppear(perform:{
+                    Task{
+                        await refreshUser()
+                    }
                 })
-            
+                .task {
+                    await refreshUser()
+                }
                 .frame(maxWidth: .infinity, maxHeight: 750)
             
         
@@ -210,7 +214,20 @@ struct StartMenuView: View {
     }
     
     func updater(){
-        progress = daily.caloriesEaten / 5000
+        progress = daily.caloriesEaten / currentuser.caloriesGoal
+    }
+    
+    func refreshUser() async{
+        if (currentuser.userId == "" && RealmManager.shared.user != nil) {
+            try? realm.write{
+                
+                let user = UserAcc.currentuser
+                let userA = UserAcc(firstName: user.firstName, lastName: user.lastName, sex: user.sex, birthdate: user.birthdate, bodyHeight: user.bodyHeight, goal: user.goal, weight: user.weight, weightGoal: 420, caloriesGoal: user.caloriesGoal, userId: RealmManager.shared.user!.id)
+                
+                $userAccs.append(userA)
+                realm.refresh()
+            }
+        }
     }
 }
 

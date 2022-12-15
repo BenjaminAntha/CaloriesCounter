@@ -27,11 +27,11 @@ class UserAcc: Object, Identifiable {
     @Persisted var bodyHeight: Double = 0
     @Persisted var goal: Goal = Goal.holdWeight
     @Persisted var weight: Double = 0
-    @Persisted var weightGoal: String = "not set"
+    @Persisted var weightGoal: Double = 0
     @Persisted var caloriesGoal: Double = 0
     @Persisted var daily: List<Daily> = List<Daily>()
     
-    convenience init(firstName: String, lastName: String, sex: String, birthdate: Date, bodyHeight: Double, goal: Goal, weight: Double, weightGoal: String, caloriesGoal: Double, userId: String) {
+    convenience init(firstName: String, lastName: String, sex: String, birthdate: Date, bodyHeight: Double, goal: Goal, weight: Double, weightGoal: Double, caloriesGoal: Double, userId: String) {
         self.init()
         self.daily.append(Daily())
         self.userId = userId

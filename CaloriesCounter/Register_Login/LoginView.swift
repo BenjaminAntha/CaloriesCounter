@@ -45,10 +45,9 @@ struct LoginView: View {
                         isLoggingIn = false
                     }
                 }
-                .disabled(isLoggingIn)
                 .frame(width: 150, height: 50)
-                .background(Color.gray)
                 .foregroundColor(.white)
+                .background(Color.green)
                 .clipShape(Capsule())
                 
                 NavigationLink(destination: RegisterView()) {
