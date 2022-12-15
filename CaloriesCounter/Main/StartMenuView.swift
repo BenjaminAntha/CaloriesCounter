@@ -71,7 +71,12 @@ struct StartMenuView: View {
                             
                             HStack{
                                 VStack{
-                                    Text("\(currentuser.caloriesGoal - daily.caloriesEaten + daily.caloriesBurned, specifier: "%.1f")")
+                                    if ((currentuser.caloriesGoal - daily.caloriesEaten + daily.caloriesBurned) < 0) {
+                                        Text("0")
+                                    }else{
+                                        Text("\(currentuser.caloriesGoal - daily.caloriesEaten + daily.caloriesBurned, specifier: "%.1f")")
+                                    }
+                                    
                                     Text("Übrig")
                                 }
                                 Spacer()
