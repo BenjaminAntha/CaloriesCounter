@@ -19,6 +19,7 @@ struct FooterView: View {
         userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
     }
         var body: some View {
+            
             TabView {
                 VStack {
                     StartMenuView(currentUser: currentuser ?? UserAcc())
@@ -29,6 +30,7 @@ struct FooterView: View {
                     Label("Kalender", systemImage: "calendar")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .toolbarBackground(Color.green.opacity(0.2), for: .tabBar)
                 
                 VStack {
                     StatsView()
