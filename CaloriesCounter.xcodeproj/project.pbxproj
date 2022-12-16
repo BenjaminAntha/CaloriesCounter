@@ -17,16 +17,15 @@
 		003CBBFA293219340037C716 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBF9293219340037C716 /* Food.swift */; };
 		003CBBFC29321A3F0037C716 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBFB29321A3F0037C716 /* Person.swift */; };
 		003CBBFE293391B60037C716 /* PersonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBBFD293391B60037C716 /* PersonData.swift */; };
-		003CBC022933AB3E0037C716 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CBC012933AB3E0037C716 /* Datum.swift */; };
 		0A12C4BD292ECB6800F5C425 /* FoodProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12C4BC292ECB6800F5C425 /* FoodProduct.swift */; };
 		0A362CCE2932212C00166289 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CCD2932212C00166289 /* RealmManager.swift */; };
 		0A362CD02933A53100166289 /* ListFoodProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CCF2933A53100166289 /* ListFoodProductsView.swift */; };
 		0A362CD22933A87D00166289 /* UserAcc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD12933A87D00166289 /* UserAcc.swift */; };
 		0A362CD42934089200166289 /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD32934089200166289 /* Daily.swift */; };
 		0A362CD62934096600166289 /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD52934096600166289 /* Nutrition.swift */; };
-		0A362CD82936BD7B00166289 /* AddDummyFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD72936BD7B00166289 /* AddDummyFoodView.swift */; };
+		0A362CD82936BD7B00166289 /* AddNewFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CD72936BD7B00166289 /* AddNewFood.swift */; };
 		0A362CDF293956E100166289 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CDE293956E100166289 /* LoginView.swift */; };
-		0A362CE1293DF0C400166289 /* AddDummyUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE0293DF0C400166289 /* AddDummyUserView.swift */; };
+		0A362CE1293DF0C400166289 /* DummyAddUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE0293DF0C400166289 /* DummyAddUser.swift */; };
 		0A362CE3293E525B00166289 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE2293E525B00166289 /* RegisterView.swift */; };
 		0A362CE5293F4F9700166289 /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A362CE4293F4F9700166289 /* FoodDetailView.swift */; };
 		0A362CE82948A1D300166289 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 0A362CE72948A1D300166289 /* WrappingHStack */; };
@@ -51,16 +50,15 @@
 		003CBBF9293219340037C716 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		003CBBFB29321A3F0037C716 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		003CBBFD293391B60037C716 /* PersonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonData.swift; sourceTree = "<group>"; };
-		003CBC012933AB3E0037C716 /* Datum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
 		0A12C4BC292ECB6800F5C425 /* FoodProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProduct.swift; sourceTree = "<group>"; };
 		0A362CCD2932212C00166289 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		0A362CCF2933A53100166289 /* ListFoodProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFoodProductsView.swift; sourceTree = "<group>"; };
 		0A362CD12933A87D00166289 /* UserAcc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAcc.swift; sourceTree = "<group>"; };
 		0A362CD32934089200166289 /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		0A362CD52934096600166289 /* Nutrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition.swift; sourceTree = "<group>"; };
-		0A362CD72936BD7B00166289 /* AddDummyFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDummyFoodView.swift; sourceTree = "<group>"; };
+		0A362CD72936BD7B00166289 /* AddNewFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFood.swift; sourceTree = "<group>"; };
 		0A362CDE293956E100166289 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		0A362CE0293DF0C400166289 /* AddDummyUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDummyUserView.swift; sourceTree = "<group>"; };
+		0A362CE0293DF0C400166289 /* DummyAddUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyAddUser.swift; sourceTree = "<group>"; };
 		0A362CE2293E525B00166289 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		0A362CE4293F4F9700166289 /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
 		0A992323292C03A800F68E16 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -136,26 +134,25 @@
 			path = Register_Login;
 			sourceTree = "<group>";
 		};
-		0A362CDA2936BE8900166289 /* DummyData_TestRealm */ = {
+		0A362CDA2936BE8900166289 /* DummyViews_TestRealm */ = {
 			isa = PBXGroup;
 			children = (
 				003CBBF729310E400037C716 /* FoodSample.swift */,
 				003CBBF9293219340037C716 /* Food.swift */,
 				003CBBFB29321A3F0037C716 /* Person.swift */,
 				003CBBFD293391B60037C716 /* PersonData.swift */,
-				0A362CD72936BD7B00166289 /* AddDummyFoodView.swift */,
 				0A362CCF2933A53100166289 /* ListFoodProductsView.swift */,
-				0A362CE0293DF0C400166289 /* AddDummyUserView.swift */,
+				0A362CE0293DF0C400166289 /* DummyAddUser.swift */,
 			);
-			path = DummyData_TestRealm;
+			path = DummyViews_TestRealm;
 			sourceTree = "<group>";
 		};
 		0A362CDB2936BEFA00166289 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				003CBBF52930BBBF0037C716 /* ProgressCircle.swift */,
-				003CBC012933AB3E0037C716 /* Datum.swift */,
 				0A362CE4293F4F9700166289 /* FoodDetailView.swift */,
+				0A362CD72936BD7B00166289 /* AddNewFood.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -189,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				0A362CDD2936C14500166289 /* Realm */,
-				0A362CDA2936BE8900166289 /* DummyData_TestRealm */,
+				0A362CDA2936BE8900166289 /* DummyViews_TestRealm */,
 				0A362CD92936BE1400166289 /* Register_Login */,
 				0A362CDB2936BEFA00166289 /* Components */,
 				00C79574292BFA070097D255 /* Layout */,
@@ -296,7 +293,7 @@
 				0AE4D4FD292BD10C00355CFF /* CaloriesCounterApp.swift in Sources */,
 				0A362CD22933A87D00166289 /* UserAcc.swift in Sources */,
 				0A362CE5293F4F9700166289 /* FoodDetailView.swift in Sources */,
-				0A362CD82936BD7B00166289 /* AddDummyFoodView.swift in Sources */,
+				0A362CD82936BD7B00166289 /* AddNewFood.swift in Sources */,
 				0A362CE3293E525B00166289 /* RegisterView.swift in Sources */,
 				003CBBF42930A40B0037C716 /* ProfilView.swift in Sources */,
 				0AE4D4FF292BD10C00355CFF /* ContentView.swift in Sources */,
@@ -310,11 +307,10 @@
 				0A12C4BD292ECB6800F5C425 /* FoodProduct.swift in Sources */,
 				0A992325292C03A900F68E16 /* HeaderView.swift in Sources */,
 				003CBBFC29321A3F0037C716 /* Person.swift in Sources */,
-				0A362CE1293DF0C400166289 /* AddDummyUserView.swift in Sources */,
+				0A362CE1293DF0C400166289 /* DummyAddUser.swift in Sources */,
 				003CBBF02930A3B50037C716 /* AddFoodView.swift in Sources */,
 				0A362CDF293956E100166289 /* LoginView.swift in Sources */,
 				003CBBF22930A3FD0037C716 /* FoodLog.swift in Sources */,
-				003CBC022933AB3E0037C716 /* Datum.swift in Sources */,
 				0A362CD42934089200166289 /* Daily.swift in Sources */,
 				003CBBF02930A3B50037C716 /* AddFoodView.swift in Sources */,
 				003CBBF22930A3FD0037C716 /* FoodLog.swift in Sources */,

@@ -25,41 +25,21 @@ struct AddFoodView: View {
         NavigationView {
             VStack {
                 Section{
-                    NavigationLink("", destination: AddDummyFoodView()
-                        , isActive: $showEditAddFood)
                     List(foodProducts, id: \._id) { foodProduct in
                         NavigationLink(destination: FoodDetailView(currentUser: currentUser ,foodProduct: foodProduct)) {
                             Text(foodProduct.Name)
                         }
-                        
                     }.searchable(text: $searchFilter,
                                  collection: $foodProducts,
                                  keyPath: \.Name)
-                    .navigationBarTitleDisplayMode(.inline )
-                    .toolbar{
-                        ToolbarItem(placement: .principal) { // <3>
-                                        HStack {
-                                            Text("Add Your Food").font(.headline)
-                                            Spacer()
-                                            Button("+", action: {
-                                                showEditAddFood.toggle()
-                                                print("test")
-                                                print(showEditAddFood)
-                                            })
-                                            .buttonStyle(.borderedProminent)
-                                            .foregroundColor(.white)
-                                            .tint(.green)
-                                
-                                            
-                                        }
-                                        
-                                    }
-                      
+                    .toolbar {
+                        NavigationLink(destination: AddNewFood()) {
+                            Image(systemName: "plus").foregroundColor(.green)
+                        }
                     }
-                    
                 }.task {
                     await refreshUser()
-                }
+                }.padding(0)
             }
         }
     }

@@ -32,7 +32,19 @@ struct RegisterView: View {
                     .font(Font.title.bold())
                     .foregroundColor(.gray)
                 Form{
-                    Section{
+                    Section(footer:
+                        Button("Create Account") {
+                            Task {
+                                await addUser()
+                            }
+                        }
+                        .frame(width: 150, height: 50)
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center))
+                    {
                         TextField("Firstname: ", text: $firstName)
                         TextField("Lastname: ", text: $lastName)
                         TextField("Grösse in cm: ", text: $height)
@@ -57,28 +69,13 @@ struct RegisterView: View {
                         }
                         TextField("Email: ", text: $email)
                         SecureField("Password: ", text: $pw)
+                        Spacer()
                     }
                     .listRowSeparator(.hidden)
                     .textFieldStyle(.roundedBorder)
                     .foregroundColor(.gray)
                     
                 }.scrollContentBackground(.hidden)
-                
-                Button("Create Account") {
-                    Task {
-                        await addUser()
-                    }
-                }
-                .frame(width: 150, height: 50)
-                .background(Color.green)
-                .foregroundColor(.white)
-                .clipShape(Capsule())
-                .padding()
-                .ignoresSafeArea(.keyboard)
-                
-                
-                Spacer(minLength: 40)
-                
             }
             
         }

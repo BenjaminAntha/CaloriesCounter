@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct AddDummyUserView: View {
+struct DummyAddUser: View {
     @ObservedResults(UserAcc.self) var userAcc: Results<UserAcc>
     
     var body: some View {
@@ -47,8 +47,8 @@ struct AddDummyUserView: View {
     }
 }
 
-struct AddDummyUserView_Previews: PreviewProvider {
+struct DummyAddUser_Previews: PreviewProvider {
     static var previews: some View {
-        AddDummyUserView()
+        DummyAddUser()
     }
 }
