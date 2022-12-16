@@ -52,7 +52,7 @@ struct HeaderView: View {
                     }
                 }
             )      
-        .frame(maxWidth: .infinity, maxHeight: 170)
+        .frame(maxWidth: .infinity, maxHeight: 190)
     }
     
     func changeDateBack(){

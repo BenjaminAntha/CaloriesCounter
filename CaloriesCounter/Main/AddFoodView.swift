@@ -25,28 +25,43 @@ struct AddFoodView: View {
         NavigationView {
             VStack {
                 Section{
-                    Button("add Food", action: {
-                        showEditAddFood.toggle()
-                    })
-                    .buttonStyle(.borderedProminent)
-                    .foregroundColor(.white)
-                    .tint(.green)
                     NavigationLink("", destination: AddDummyFoodView()
                         , isActive: $showEditAddFood)
-    
-                    
                     List(foodProducts, id: \._id) { foodProduct in
                         NavigationLink(destination: FoodDetailView(currentUser: currentUser ,foodProduct: foodProduct)) {
                             Text(foodProduct.Name)
                         }
+                        
                     }.searchable(text: $searchFilter,
                                  collection: $foodProducts,
                                  keyPath: \.Name)
+                    .navigationBarTitleDisplayMode(.inline )
+                    .toolbar{
+                        ToolbarItem(placement: .principal) { // <3>
+                                        HStack {
+                                            Text("Add Your Food").font(.headline)
+                                            Spacer()
+                                            Button("+", action: {
+                                                showEditAddFood.toggle()
+                                                print("test")
+                                                print(showEditAddFood)
+                                            })
+                                            .buttonStyle(.borderedProminent)
+                                            .foregroundColor(.white)
+                                            .tint(.green)
+                                
+                                            
+                                        }
+                                        
+                                    }
+                      
+                    }
+                    
                 }.task {
                     await refreshUser()
                 }
             }
-        }.navigationTitle("Add your Food")
+        }
     }
     
     func refreshUser() async{

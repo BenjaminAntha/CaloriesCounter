@@ -90,6 +90,7 @@ struct FoodLogView: View {
                         }
                     }
                 }
+                .padding(.top, -10)
             }
         }
     }

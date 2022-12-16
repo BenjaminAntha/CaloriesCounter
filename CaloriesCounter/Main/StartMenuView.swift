@@ -51,7 +51,7 @@ struct StartMenuView: View {
                 VStack {
 
                     HeaderView(dateAngezeigt: $date)
-                    
+
                     ScrollView{
                         VStack {
                             ZStack {
@@ -209,7 +209,7 @@ struct StartMenuView: View {
                 .task {
                     await refreshUser()
                 }
-                .frame(maxWidth: .infinity, maxHeight: 750)
+                
             
         
     }
