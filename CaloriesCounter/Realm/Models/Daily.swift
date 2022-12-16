@@ -14,7 +14,7 @@ class Daily: Object, Identifiable {
     @Persisted var caloriesEaten: Double = 0
     @Persisted var caloriesBurned: Double = 0
     @Persisted var carbohydrates: Double = 0
-    @Persisted var protein: Double
+    @Persisted var protein: Double = 0
     @Persisted var fat: Double = 0
     @Persisted var waterCounter: Double = 0
     @Persisted var nutrition: List<Nutrition> = List<Nutrition>()
