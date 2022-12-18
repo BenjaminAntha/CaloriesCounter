@@ -38,7 +38,8 @@ struct AddNewFood: View {
                         .foregroundColor(.white)
                         .tint(.green)
                         .frame(maxWidth: .infinity, alignment: .center)){
-                        
+                        Text("Währte pro 100 gramm:")
+                                .listRowSeparator(.hidden)
                         VStack{
                             Text("Name: ").frame(maxWidth: .infinity, alignment: .leading)
                             
@@ -49,24 +50,32 @@ struct AddNewFood: View {
                             Text("Kalorien: ").frame(maxWidth: .infinity, alignment: .leading)
                             
                             TextField("Kalorien", text: $calories)
+                                .textContentType(.oneTimeCode)
+                                .keyboardType(.numberPad)
                         }
                         
                         VStack{
                             Text("Kohlenhydrate: ").frame(maxWidth: .infinity, alignment: .leading)
                             
                             TextField("Kohlenhydrate", text: $kohlenhydrate)
+                                .textContentType(.oneTimeCode)
+                                .keyboardType(.numberPad)
                         }
                         
                         VStack{
                             Text("Fett: ").frame(maxWidth: .infinity, alignment: .leading)
                             
                             TextField("Fett", text: $fett)
+                                .textContentType(.oneTimeCode)
+                                .keyboardType(.numberPad)
                         }
                         
                         VStack{
                             Text("Protein: ").frame(maxWidth: .infinity, alignment: .leading)
                             
                             TextField("Protein", value: $protein, format: .number)
+                                .textContentType(.oneTimeCode)
+                                .keyboardType(.numberPad)
                         }
                        
                     }

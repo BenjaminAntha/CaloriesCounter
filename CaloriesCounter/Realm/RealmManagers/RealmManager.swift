@@ -67,7 +67,7 @@ class RealmManager: ObservableObject {
                 }
             }, rerunOnOpen: true )
             
-            realm = try! await Realm(configuration: configuration!, downloadBeforeOpen: .always)
+            realm = try! await Realm(configuration: configuration!, downloadBeforeOpen: .never)
         } else {
             let _ = print("You have to log in")
             
@@ -88,6 +88,6 @@ class RealmManager: ObservableObject {
             }
         }, rerunOnOpen: true )
         
-        realm = try! await Realm(configuration: configuration!, downloadBeforeOpen: .always)
+        realm = try! await Realm(configuration: configuration!, downloadBeforeOpen: .never)
     }
 }
