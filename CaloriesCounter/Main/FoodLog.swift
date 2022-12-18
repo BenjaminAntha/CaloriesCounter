@@ -46,6 +46,7 @@ struct FoodLogView: View {
                             Text("This is what you consumed Today")
                                 .padding()
                                 .fontWeight(.bold)
+                                .font(.system(size: 18))
                             Section {
                                 if daily.nutritions?.foodProduct != nil {
                                     ForEach(daily.nutritions?.foodProduct ?? list, id: \._id) { food in
