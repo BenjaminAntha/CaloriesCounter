@@ -21,6 +21,9 @@ struct RegisterView: View {
     @State var weight: String = ""
     @State var selectedGoal: Goal = .holdWeight
     @State var selectedSex = "m"
+    
+    @State var btnDisabled = true
+    @State var validationMessage = ""
 
     let startingDate: Date = Calendar.current.date(from: DateComponents(year: 1950)) ?? Date()
     let endingDate = Date()
@@ -38,6 +41,7 @@ struct RegisterView: View {
                                 await addUser()
                             }
                         }
+                        .disabled(btnDisabled || email.isEmpty || height.isEmpty || weight.isEmpty)
                         .frame(width: 150, height: 50)
                         .background(Color.green)
                         .foregroundColor(.white)
@@ -68,8 +72,17 @@ struct RegisterView: View {
                             }
                         }
                         TextField("Email: ", text: $email)
-                        SecureField("Password: ", text: $pw)
+                        Group{
+                            SecureField("Password: ", text: $pw)
+                                .onChange(of: pw){ newValue in
+                                    pwValidation()
+                                }
+                            
+                            Text(validationMessage).foregroundColor(.red)
+                        }
                         Spacer()
+
+                        
                     }
                     .listRowSeparator(.hidden)
                     .textFieldStyle(.roundedBorder)
@@ -80,6 +93,18 @@ struct RegisterView: View {
             
         }
       
+    }
+    
+    func pwValidation(){
+        if pw.count < 6{
+            btnDisabled = true
+            validationMessage = "Passwort muss die Länge von 6 haben"
+        }
+        
+        if pw.count > 6 {
+            btnDisabled = false
+            validationMessage = ""
+        }
     }
     
     func addUser() async{

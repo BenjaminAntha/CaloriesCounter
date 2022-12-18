@@ -123,26 +123,35 @@ struct FoodDetailView: View {
         
         let thawedFood = foodProduct.thaw()!
         let calories = amount / 100 * (Double(thawedFood.Kalorien) ?? 1)
+        let carbohydrates = amount / 100 * (Double(thawedFood.Kohlenhydrate_verfügbar) ?? 1)
+        let fat = amount / 100 * (Double(thawedFood.Fett) ?? 1)
+        let protein = amount / 100 * thawedFood.Protein
+        
+        print(carbohydrates)
         
         if checkIfDailyIsCreated {
             let thawedDaily = daily.thaw()!
             try! realm.write{
+                
+                thawedFood.amount = amount
                 thawedDaily.nutritions?.foodProduct.append(thawedFood)
                 thawedDaily.nutritions?.amount = amount
                 thawedDaily.caloriesEaten += calories
-                thawedDaily.carbohydrates += Double(thawedFood.Kohlenhydrate_verfügbar) ?? 0
-                thawedDaily.fat += Double(thawedFood.Fett) ?? 0
-                thawedDaily.protein += thawedFood.Protein
+                thawedDaily.carbohydrates += carbohydrates
+                thawedDaily.fat += fat
+                thawedDaily.protein += protein
             }
         } else {
             try! realm.write{
                 let usser = currentuser.thaw()!
+                thawedFood.amount = amount
                 daily.nutritions?.foodProduct.append(thawedFood)
                 daily.nutritions?.amount = amount
                 daily.date = formatter.string(from: date)
                 daily.caloriesEaten += calories
-                daily.carbohydrates += Double(thawedFood.Kohlenhydrate_verfügbar) ?? 0
-                daily.fat += Double(thawedFood.Fett) ?? 0
+                daily.carbohydrates += carbohydrates
+                daily.fat += fat
+                daily.protein += protein
                 daily.userId = currentUser.userId
                 usser.daily.append(daily)
             }

@@ -32,7 +32,7 @@ struct ProfilView: View {
                     Text("Ziel: " + currentUser.goal.rawValue)
                     Text("Grösse: " + String(currentUser.bodyHeight) + " cm")
                     Text("Gewicht: " + String(currentUser.weight) + " kg")
-                    Text("Kalorien/Tag: " + String(currentUser.caloriesGoal) + " kcal")
+                    Text("Kalorien/Tag: \(currentUser.caloriesGoal, specifier: "%.0f") kcal")
                 }
                 Button("Logout", action: logOut)
                     .foregroundColor(.green)

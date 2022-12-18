@@ -23,6 +23,7 @@ class RealmManager: ObservableObject {
         self.user = app.currentUser
     }
     
+    @MainActor
     func register(emailUser: String, passwordUser: String) async throws {
         let client = app.emailPasswordAuth
         do {

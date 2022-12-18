@@ -39,6 +39,7 @@ class FoodProduct: Object, Identifiable, ObjectKeyIdentifiable {
     @Persisted var Vitamin_E: String = ""
     @Persisted var Wasser: String = ""
     @Persisted var Zink: String = ""
+    @Persisted var amount: Double = 1
     
     
     convenience init(Name: String, Synonyme: String, Kategorie: String, Bezugseinheit: String, Kilojoule: String, Fett: String, Kalorien: String, Cholesterin: String, Fettsäuren_gesättigt: String, Kohlenhydrate_verfügbar: String, Nahrungsfasern: String, Zucker: String, Calcium: String, Eisen: String, Kalium: String, Magnesium: String, Natrium: String, Protein: Double, Salz: String, Vitamin_B1: String, Vitamin_B12: String, Vitamin_B2: String, Vitamin_B6: String, Vitamin_C: String, Vitamin_D: String, Vitamin_E: String, Wasser: String, Zink: String) {

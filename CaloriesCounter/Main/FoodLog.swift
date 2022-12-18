@@ -11,7 +11,7 @@ import RealmSwift
 
 struct FoodLogView: View {
     @ObservedResults(UserAcc.self) var userAccs: Results<UserAcc>
-        
+    @Environment(\.realm) var realm
     var currentuser: UserAcc {
         userAccs.first(where: ({$0.userId == RealmManager.shared.user?.id } )) ?? UserAcc()
     }
@@ -48,8 +48,26 @@ struct FoodLogView: View {
                                 .fontWeight(.bold)
                             Section {
                                 if daily.nutritions?.foodProduct != nil {
-                                    ForEach(daily.nutritions?.foodProduct ?? list) { food in
+                                    ForEach(daily.nutritions?.foodProduct ?? list, id: \._id) { food in
                                         Text(food.Name)
+                                    }.onDelete{ indexSet in
+                                        indexSet.forEach { index in
+                                            let food = daily.nutritions?.foodProduct[index] ?? FoodProduct()
+                                            let thawdFood = food.thaw()!
+                                            let thawdDaily = daily.thaw()!
+                                            try? realm.write {
+                                                let calories = thawdFood.amount / 100 * (Double(thawdFood.Kalorien) ?? 1)
+                                                let carbohydrates = thawdFood.amount / 100 * (Double(thawdFood.Kohlenhydrate_verfügbar) ?? 1)
+                                                let fat = thawdFood.amount / 100 * (Double(thawdFood.Fett) ?? 1)
+                                                let protein = thawdFood.amount / 100 * thawdFood.Protein
+                                                thawdDaily.caloriesEaten -= calories
+                                                thawdDaily.carbohydrates -= carbohydrates
+                                                thawdDaily.fat -= fat
+                                                thawdDaily.protein -= protein
+                                                
+                                                thawdDaily.nutritions?.foodProduct.remove(at: index)
+                                            }
+                                        }
                                     }
                                 }
                             } header: {

@@ -45,37 +45,18 @@ struct LoginView: View {
                         isLoggingIn = false
                     }
                 }
+                .disabled(email.isEmpty || password.isEmpty)
                 .frame(width: 150, height: 50)
                 .foregroundColor(.white)
                 .background(Color.green)
                 .clipShape(Capsule())
                 
                 NavigationLink(destination: RegisterView()) {
-                    Label("CREATE ACCOUNT", systemImage: "person.badge.plus")
+                    Label("ACCOUNT ERSTELLEN", systemImage: "person.badge.plus")
                         .font(.headline)
                         .foregroundColor(.accentColor)
                 }
                 .padding()
-                
-                
-                
-                /*
-                Button("Create Account") {
-                    // Button pressed, so create account and then log in
-                    isLoggingIn = true
-                    Task {
-                        await signUp(email: email, password: password)
-                        isLoggingIn = false
-                    }
-                }
-                .disabled(isLoggingIn)
-                .frame(width: 150, height: 50)
-                .background(Color.gray)
-                .foregroundColor(.white)
-                .clipShape(Capsule()) */
-                
-               
-                
             }
             .foregroundColor(.gray)
             .padding()

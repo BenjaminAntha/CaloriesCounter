@@ -25,7 +25,7 @@ struct StartMenuView: View {
     
     @State var progress: Double = 0
     @State var date: Date = Date()
-    @State private var caloriesBurned: Double = 0.5
+    @State private var caloriesBurned: Double = 0
 
     
     var daily: Daily {
@@ -37,21 +37,21 @@ struct StartMenuView: View {
         for d in currentuser.daily {
             if  d.userId == currentuser.userId && d.date == dateEdited{
                 k = d
-               
             }
         }
         return k
     }
     
+    
+    
     var body: some View {
-        
+            
             Color.green.opacity(0.2)
                 .ignoresSafeArea()
                 .overlay(
                 VStack {
 
                     HeaderView(dateAngezeigt: $date)
-
                     ScrollView{
                         VStack {
                             ZStack {
@@ -126,6 +126,7 @@ struct StartMenuView: View {
                             Spacer(minLength: 20)
                             //Wasser
                             VStack{
+                                
                                 HStack{
                                     Text("Wasserzähler")
                                     Image(systemName: "drop.fill")
@@ -135,18 +136,69 @@ struct StartMenuView: View {
                                 VStack{
                                     Text("Füge 250ml Wasser hinzu:")
                                         .padding(.top, 10)
-                                    Button {
-                                        let dailyCopied = daily.thaw()!
-                                        try! realm.write{
-                                            dailyCopied.waterCounter += 1
+                                    HStack{
+                                        Button {
+                                            Task{
+                                                await refreshUser()
+                                            }
+                                            
+                                            try! realm.write{
+                                                
+                                                if daily.userId == "" {
+                                                    let formatter = DateFormatter()
+                                                    formatter.locale = Locale(identifier: "en")
+                                                    formatter.dateFormat =  "d. MMM. y"
+                                                    let d = daily
+                                                    
+                                                    d.date = formatter.string(from: Date())
+                                                    d.userId = currentUser.userId
+                                                    d.waterCounter += 1
+                                                    $currentUser.daily.append(d)
+                                                    
+                                                }else {
+                                                    let dailyCopied = daily.thaw()!
+                                                    dailyCopied.waterCounter += 1
+                                                }
+                                                
+                                                
+                                                
+                                            }
+                                        } label: {
+                                            Image(systemName: "plus.circle")
+                                                .font(.system(size: 30))
                                         }
-                                    } label: {
-                                        Image(systemName: "plus.circle")
-                                            .font(.system(size: 30))
-                                    }
-                                    .padding(.top, 10)
-                                    
+                                        .padding(.top, 10)
                                         
+                                        Button {
+                            
+                                            try! realm.write{
+                                                
+                                                if daily.userId == "" {
+                                                    let formatter = DateFormatter()
+                                                    formatter.locale = Locale(identifier: "en")
+                                                    formatter.dateFormat =  "d. MMM. y"
+                                                    let d = daily
+                                                    
+                                                    d.date = formatter.string(from: Date())
+                                                    d.userId = currentUser.userId
+                                                    d.waterCounter += 1
+                                                    $currentUser.daily.append(d)
+                                                    
+                                                }else {
+                                                    let dailyCopied = daily.thaw()!
+                                                    if(dailyCopied.waterCounter >= 1){
+                                                        dailyCopied.waterCounter -= 1
+                                                    }
+                                                    
+                                                }
+                                            }
+                                        } label: {
+                                            Image(systemName: "minus.circle")
+                                                .font(.system(size: 30))
+                                        }
+                                        .padding(.top, 10)
+                                        
+                                    }
                                 }
                                 WrappingHStack(1..<Int(daily.waterCounter + 1), id:\.self) { i in
                                     Image(systemName: "cup.and.saucer.fill")
@@ -177,9 +229,26 @@ struct StartMenuView: View {
                                             .padding()
                                             .font(.system(size: 20))
                                         Button {
-                                            let dailyCopied = daily.thaw()!
+                                            Task{
+                                                await refreshUser()
+                                            }
+                                            
                                             try! realm.write{
-                                                dailyCopied.caloriesBurned = caloriesBurned
+                                                if daily.userId == "" {
+                                                    let formatter = DateFormatter()
+                                                    formatter.locale = Locale(identifier: "en")
+                                                    formatter.dateFormat =  "d. MMM. y"
+                                                    let d = daily
+                                                    
+                                                    d.date = formatter.string(from: Date())
+                                                    d.userId = currentUser.userId
+                                                    d.caloriesBurned += 1
+                                                    $currentUser.daily.append(d)
+                                                } else {
+                                                    let dailyCopied = daily.thaw()!
+                                                    dailyCopied.caloriesBurned = caloriesBurned
+                                                }
+                                                
                                             }
                                         } label: {
                                             Image(systemName: "plus.circle")
