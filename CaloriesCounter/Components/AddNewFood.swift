@@ -38,7 +38,7 @@ struct AddNewFood: View {
                         .foregroundColor(.white)
                         .tint(.green)
                         .frame(maxWidth: .infinity, alignment: .center)){
-                        Text("Währte pro 100 gramm:")
+                        Text("Werte pro 100 gramm:")
                                 .listRowSeparator(.hidden)
                         VStack{
                             Text("Name: ").frame(maxWidth: .infinity, alignment: .leading)
